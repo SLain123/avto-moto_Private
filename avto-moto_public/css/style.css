@@ -52,7 +52,8 @@ body {
   color: #48494D;
   line-height: 22px;
   font-weight: 600;
-  margin-left: 68px;
+  margin-left: 66px;
+  white-space: nowrap;
 }
 
 .nav__link:first-child {
@@ -210,6 +211,10 @@ body {
   border: none;
 }
 
+.product-info__request-btn:hover {
+  background: #BD0C21;
+}
+
 .product-info__credit-btn {
   width: 222px;
   color: #D12136;
@@ -217,6 +222,11 @@ body {
   white-space: nowrap;
   border: 1px solid #D12136;
   background-color: white;
+}
+
+.product-info__credit-btn:hover {
+  background: #D12136;
+  color: white;
 }
 
 .product-info__btn {
@@ -228,6 +238,62 @@ body {
   text-transform: uppercase;
   padding: 16px 20px;
   cursor: pointer;
+}
+
+.product-description {
+  width: 60%;
+}
+
+.product-description__main {
+  margin: 0 auto;
+}
+
+.product-description__control-block {
+  width: 600px;
+}
+
+.product-description__btn {
+  background-color: white;
+  width: 33.33%;
+  height: 50px;
+  font-size: 20px;
+  line-height: 27px;
+  text-align: center;
+  color: #48494D;
+  border: 1px solid #D7D9DF;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  outline: none;
+  cursor: pointer;
+}
+
+.product-description__btn-active {
+  color: #FFFFFF;
+  background: #D12136;
+}
+
+.product-description__characters-block {
+  width: 565px;
+}
+
+.product-description__char {
+  border-bottom: 1px solid #D7D9DF;
+  padding: 20px 0 8px 0;
+  line-height: 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.product-description__name {
+  color: #48494D;
+}
+
+.footer_position {
+  margin-top: 140px;
 }
 
 @font-face {
