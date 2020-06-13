@@ -4,32 +4,49 @@ body {
   font-size: 16px;
   font-family: 'open sans';
 }
+
 .container {
   margin: 0 375px;
 }
+
 .menu {
   background: #F5F5F9;
   width: 100%;
   height: 84px;
 }
+
 .menu__body {
   margin: 0 auto;
   max-width: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 84px;
 }
+
 .logo {
   cursor: pointer;
 }
+
 .logo__pic {
   max-height: 55px;
 }
+
 .nav__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
+
 .nav__link {
   text-decoration: none;
   color: #48494D;
@@ -37,24 +54,34 @@ body {
   font-weight: 600;
   margin-left: 68px;
 }
+
 .nav__link:first-child {
   margin-left: 0;
 }
+
 .main {
   width: 60%;
 }
+
 .main__wrapper {
   margin: 90px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 .slider {
   width: 600px;
 }
+
 .slider__main {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   overflow-x: hidden;
 }
+
 .slider__new-model {
   position: absolute;
   top: 0;
@@ -62,6 +89,7 @@ body {
   background-color: #D12136;
   width: 122px;
 }
+
 .slider__new-model p {
   margin: 7px 10px;
   color: white;
@@ -71,16 +99,25 @@ body {
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
+
 .slider__control {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-top: 39px;
 }
+
 .slider__btn {
   border-radius: 500px;
   border: 1px solid #D7D9DF;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background: #FFFFFF;
   width: 52px;
   height: 52px;
@@ -88,16 +125,20 @@ body {
   padding-bottom: 3px;
   cursor: pointer;
 }
+
 .slider__mini-pic {
   margin: 0 12px;
   cursor: pointer;
 }
+
 .product-info {
   width: 340px;
 }
+
 .product-info__position {
   margin-left: 55px;
 }
+
 .product-info__title {
   font-weight: bold;
   font-size: 30px;
@@ -105,29 +146,41 @@ body {
   color: #48494D;
   margin-left: 7px;
 }
+
 .product-info__icons-block {
   margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 .product-info__icon {
   margin-left: 7px;
 }
+
 .product-info__descript {
   line-height: 22px;
   text-align: center;
   color: rgba(72, 73, 77, 0.5);
 }
+
 .product-info__cost-block {
   margin-top: 37px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .product-info__current-cost {
   font-weight: bold;
   font-size: 35px;
   line-height: 48px;
   color: #48494D;
 }
+
 .product-info__old-cost {
   font-size: 20px;
   line-height: 27px;
@@ -135,6 +188,7 @@ body {
   margin-left: 33px;
   position: relative;
 }
+
 .product-info__old-cost:after {
   content: '';
   width: 100%;
@@ -143,8 +197,11 @@ body {
   position: absolute;
   top: 50%;
   left: 0;
-  transform: rotate(-5deg);
+  -webkit-transform: rotate(-5deg);
+      -ms-transform: rotate(-5deg);
+          transform: rotate(-5deg);
 }
+
 .product-info__request-btn {
   margin-top: 37px;
   height: 52px;
@@ -152,6 +209,7 @@ body {
   color: #FFFFFF;
   border: none;
 }
+
 .product-info__credit-btn {
   width: 222px;
   color: #D12136;
@@ -160,6 +218,7 @@ body {
   border: 1px solid #D12136;
   background-color: white;
 }
+
 .product-info__btn {
   font-weight: 600;
   font-size: 14px;
@@ -170,6 +229,7 @@ body {
   padding: 16px 20px;
   cursor: pointer;
 }
+
 @font-face {
   font-family: "open sans";
   src: url(../fonts/OpenSans-Regular.woff2) format("woff2");
@@ -177,6 +237,7 @@ body {
   font-weight: regular;
   font-style: regular;
 }
+
 @font-face {
   font-family: "open sans";
   src: url(../fonts/OpenSans-SemiBold.woff2) format("woff2");
@@ -184,6 +245,7 @@ body {
   font-weight: 600;
   font-style: regular;
 }
+
 @font-face {
   font-family: "open sans";
   src: url(../fonts/OpenSans-Bold.woff2) format("woff2");
