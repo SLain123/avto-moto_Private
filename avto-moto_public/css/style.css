@@ -77,10 +77,8 @@ body {
 
 .slider__main {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  overflow-x: hidden;
+  width: 600px;
+  height: 375px;
 }
 
 .slider__new-model {
@@ -89,6 +87,7 @@ body {
   left: 0;
   background-color: #D12136;
   width: 122px;
+  z-index: 1;
 }
 
 .slider__new-model p {
@@ -99,6 +98,22 @@ body {
   text-align: center;
   letter-spacing: 0.07em;
   text-transform: uppercase;
+}
+
+.slider__item {
+  width: 600px;
+  height: 375px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.slider__item picture {
+  height: 380px;
+}
+
+.slider__item-opacity {
+  opacity: 0;
 }
 
 .slider__control {
@@ -125,6 +140,7 @@ body {
   font-size: 24px;
   padding-bottom: 3px;
   cursor: pointer;
+  outline: none;
 }
 
 .slider__mini-pic {
