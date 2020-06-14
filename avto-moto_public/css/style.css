@@ -106,6 +106,9 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  -webkit-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
 }
 
 .slider__item picture {
@@ -288,11 +291,12 @@ body {
   background: #D12136;
 }
 
-.product-description__characters-block {
+.characters-block {
   width: 565px;
+  display: block;
 }
 
-.product-description__char {
+.characters-block__item {
   border-bottom: 1px solid #D7D9DF;
   padding: 20px 0 8px 0;
   line-height: 22px;
@@ -304,8 +308,129 @@ body {
           justify-content: space-between;
 }
 
-.product-description__name {
+.characters-block__name {
   color: #48494D;
+}
+
+.feedback {
+  position: relative;
+  display: none;
+}
+
+.feedback__alarm {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  color: #D12136;
+}
+
+.feedback_bold {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.feedback_shift-text {
+  margin-left: 12px;
+}
+
+.feedback__send-btn {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  text-align: center;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #D12136;
+  border: 1px solid #D12136;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 16.5px 20px;
+  background-color: white;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  cursor: pointer;
+}
+
+.feedback__send-btn:hover {
+  background: #D12136;
+  color: white;
+}
+
+.feedback__name {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  color: #48494D;
+}
+
+.feedback__advice {
+  font-size: 15px;
+  line-height: 20px;
+  color: #D12136;
+  margin-left: 20px;
+}
+
+.feedback__footer {
+  margin-top: 26px;
+}
+
+.feedback__time {
+  font-size: 14px;
+  line-height: 19px;
+  color: #000000;
+  opacity: 0.4;
+}
+
+.feedback__answer-link {
+  font-size: 16px;
+  line-height: 22px;
+  color: #D12136;
+  margin-left: 26px;
+  cursor: pointer;
+}
+
+.contact {
+  width: 700px;
+  display: none;
+}
+
+.contact__body {
+  margin-top: 30px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.contact__addr {
+  width: 35%;
+}
+
+.contact__title {
+  font-weight: bold;
+  line-height: 22px;
+  color: #1A212F;
+  margin-bottom: 18px;
+}
+
+.contact__text {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  margin-bottom: 23px;
+}
+
+.contact__text:last-child {
+  margin-bottom: 0;
+}
+
+.contact__map {
+  width: 55%;
+  border: red solid 1px;
 }
 
 .footer_position {
