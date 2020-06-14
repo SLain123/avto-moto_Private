@@ -5,7 +5,7 @@
     // .product-description__main
 
     &__main {
-        margin: 0 auto;
+        margin: 0 auto 140px auto;
     }
 
     // .product-description__control-block
@@ -28,6 +28,11 @@
         box-sizing: border-box;
         outline: none;
         cursor: pointer;
+        float: left;
+
+        &:last-child {
+            float: none;
+        }
     }
 
     // .product-description__btn-active
@@ -36,177 +41,5 @@
         color: #FFFFFF;
         background: #D12136;
 
-    }
-}
-
- // Блок характеристик ============================
-
-.characters-block {
-        width: 565px;
-        display: block;
-
-    // .characters-block__item
-
-    &__item {
-        border-bottom: 1px solid #D7D9DF;
-        padding: 20px 0 8px 0;
-        line-height: 22px;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    // .characters-block__name
-
-    &__name {
-        color: #48494D;
-    }
-}
-
-
-// Блок отзывов =================================
-
-.feedback {
-    position: relative;
-    display: none;
-
-    // .feedback__alarm
-
-    &__alarm {
-        font-weight: 600;
-        font-size: 15px;
-        line-height: 20px;
-        color: #D12136;
-    }
-
-    // .feedback_bold
-
-    &_bold {
-        font-weight: 600;
-        font-size: 15px;
-        line-height: 20px;
-    }
-
-    // .feedback_shift-text
-
-    &_shift-text {
-        margin-left: 12px;
-    }
-
-    // .feedback__send-btn
-
-    &__send-btn {
-        position: absolute;
-        top: 10px; right: 0;
-        text-align: center;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #D12136;
-        border: 1px solid #D12136;
-        box-sizing: border-box;
-        padding: 16.5px 20px;
-        background-color: white;
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 19px;
-        cursor: pointer;
-
-        &:hover {
-            background: #D12136;
-            color: white;
-        }
-    }
-
-    // .feedback__name
-
-    &__name {
-        font-weight: 600;
-        font-size: 20px;
-        line-height: 27px;
-        color: #48494D;
-    }
-
-    // .feedback__advice
-
-    &__advice {
-        font-size: 15px;
-        line-height: 20px;
-        color: #D12136;
-        margin-left: 20px;
-    }
-
-    // .feedback__footer
-
-    &__footer {
-        margin-top: 26px;
-    }
-
-    // .feedback__time
-
-    &__time {
-        font-size: 14px;
-        line-height: 19px;
-        color: #000000;
-        opacity: 0.4;
-    }
-
-    // .feedback__answer-link
-
-    &__answer-link {
-        font-size: 16px;
-        line-height: 22px;
-        color: #D12136;
-        margin-left: 26px;
-        cursor: pointer;
-    }
-}
-
-// Блок контактов =======================
-
-.contact {
-    width: 700px;
-    display: none;
-
-    // .contact__body
-
-    &__body {
-        margin-top: 30px;
-        justify-content: space-between;
-        display: flex;
-    }
-
-    // .contact__addr
-
-    &__addr {
-        width: 35%;
-    }
-
-    // .contact__title
-
-    &__title {
-        font-weight: bold;
-        line-height: 22px;
-        color: #1A212F;
-        margin-bottom: 18px;
-
-    }
-
-    // .contact__text
-
-    &__text {
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 19px;
-        margin-bottom: 23px;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-
-    // .contact__map
-
-    &__map {
-        width: 55%;
-        border: red solid 1px;
     }
 }

@@ -7,10 +7,14 @@
     <title>Avto-Moto</title>
 </head>
 <body>
-    @@include('./_navigation.html')
-    @@include('./_main-block.html')
-    @@include('./_description.html')
-    @@include('./_footer.html')
+    <div class="wrapper">
+        @@include('./_navigation.html')
+        <div class="wrapper__content">
+            @@include('./_main-block.html')
+            @@include('./_description.html')
+        </div>
+        @@include('./_footer.html')
+    </div>
     <script src="/js/script.js"></script>
 </body>
 </html>

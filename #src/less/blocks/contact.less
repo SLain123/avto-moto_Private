@@ -1,0 +1,57 @@
+// main: ../style.less
+
+.contact {
+    width: 700px;
+    display: none;
+
+    // .contact__body
+
+    &__body {
+        margin-top: 30px;
+        justify-content: space-between;
+        display: flex;
+    }
+
+    // .contact__addr
+
+    &__addr {
+        width: 35%;
+    }
+
+    // .contact__title
+
+    &__title {
+        font-weight: bold;
+        line-height: 22px;
+        color: #1A212F;
+        margin-bottom: 18px;
+
+    }
+
+    // .contact__text
+
+    &__text {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 19px;
+        margin-bottom: 23px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    // .contact__link
+
+    &__link {
+        text-decoration: none;
+        color: black;
+    }
+
+    // .contact__map
+
+    &__map {
+        width: 55%;
+        border: red solid 1px;
+    }
+}

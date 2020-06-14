@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 16px;
-  font-family: 'open sans';
+  font-family: 'open sans', Arial, Helvetica, sans-serif;
 }
 
 .container {
@@ -264,7 +264,7 @@ body {
 }
 
 .product-description__main {
-  margin: 0 auto;
+  margin: 0 auto 140px auto;
 }
 
 .product-description__control-block {
@@ -284,6 +284,11 @@ body {
           box-sizing: border-box;
   outline: none;
   cursor: pointer;
+  float: left;
+}
+
+.product-description__btn:last-child {
+  float: none;
 }
 
 .product-description__btn-active {
@@ -428,13 +433,31 @@ body {
   margin-bottom: 0;
 }
 
+.contact__link {
+  text-decoration: none;
+  color: black;
+}
+
 .contact__map {
   width: 55%;
   border: red solid 1px;
 }
 
+.wrapper {
+  position: relative;
+  min-height: 100vh;
+}
+
+.wrapper__content {
+  padding-bottom: 90px;
+}
+
 .footer_position {
-  margin-top: 140px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
 }
 
 @font-face {
