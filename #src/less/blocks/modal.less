@@ -8,5 +8,46 @@
     position: fixed;
     top: 0; left: 0;
     opacity: .8;
+    transition: all 6s ease;
     display: none;
+    animation-name: visible;
+    animation-duration: .5s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-play-state: paused;
+}
+
+@keyframes visible {
+    from {
+        display: none;
+        opacity: 0;
+    }
+    10% {
+        display: block;
+        opacity: .2;
+    }
+    50% {
+        opacity: .4;
+    }   
+    to {
+        opacity: .8;
+    }
+}
+
+@keyframes hidden {
+    from {
+        display: flex;
+        opacity: 0.9;
+    }
+    10% {
+        display: block;
+        opacity: .8;
+    }
+    50% {
+        opacity: .5;
+    }   
+    to {
+        opacity: .1;
+        display: none;
+    }
 }

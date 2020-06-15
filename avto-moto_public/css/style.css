@@ -511,7 +511,105 @@ body {
   top: 0;
   left: 0;
   opacity: 0.8;
+  -webkit-transition: all 6s ease;
+  -o-transition: all 6s ease;
+  transition: all 6s ease;
   display: none;
+  -webkit-animation-name: visible;
+          animation-name: visible;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+@-webkit-keyframes visible {
+  from {
+    display: none;
+    opacity: 0;
+  }
+
+  10% {
+    display: block;
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  to {
+    opacity: 0.8;
+  }
+}
+
+@keyframes visible {
+  from {
+    display: none;
+    opacity: 0;
+  }
+
+  10% {
+    display: block;
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  to {
+    opacity: 0.8;
+  }
+}
+
+@-webkit-keyframes hidden {
+  from {
+    display: -webkit-box;
+    display: flex;
+    opacity: 0.9;
+  }
+
+  10% {
+    display: block;
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 0.1;
+    display: none;
+  }
+}
+
+@keyframes hidden {
+  from {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    opacity: 0.9;
+  }
+
+  10% {
+    display: block;
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 0.1;
+    display: none;
+  }
 }
 
 .feed-window {
@@ -541,6 +639,16 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   display: none;
+  -webkit-animation-name: visible;
+          animation-name: visible;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
 }
 
 .feed-window__title {
@@ -593,7 +701,7 @@ body {
   padding-left: 28px;
 }
 
-.feed-window__column-two input {
+.feed-window__column-two textarea {
   width: 100%;
   height: 118px;
   padding: 15px 25px;
@@ -602,6 +710,7 @@ body {
   margin-bottom: 16px;
   background: #FFFFFF;
   border: 1px solid rgba(72, 73, 77, 0.2);
+  resize: none;
 }
 
 .feed-window__error {
@@ -667,6 +776,7 @@ body {
   border: none;
   background-color: transparent;
   cursor: pointer;
+  outline: none;
 }
 
 @font-face {
