@@ -1,9 +1,47 @@
 // main: ../style.less
 
-.footer_position {
-    position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	height: 80px;
+.footer {
+	background: #F5F5F9;
+    width: 100%;
+    height: 84px;
+	// .footer_position
+
+	&__position {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 80px;
+	}
+
+	&__body {
+		margin: 0 auto;
+        max-width: 60%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+		height: 84px;
+		flex-wrap: nowrap;
+	}
+}
+
+.nav-footer {
+
+	// .nav-footer__wrapper
+
+	&__wrapper {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+	}
+
+	// .nav-footer__link
+
+	&__link {
+		text-decoration: none;
+        color: #48494D;
+        line-height: 22px;
+        font-weight: 600;
+        white-space: nowrap;
+	}
 }

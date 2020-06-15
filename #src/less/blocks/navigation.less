@@ -30,20 +30,18 @@
     &__wrapper {
         display: flex;
         justify-content: space-between;
+        flex-wrap: nowrap;
+        width: 50%;
     }
 
     // .nav__link
 
     &__link {
+        display: block;
         text-decoration: none;
         color: #48494D;
         line-height: 22px;
         font-weight: 600;
-        margin-left: 66px;
         white-space: nowrap;
-
-        &:first-child {
-            margin-left: 0;
-        }
     }
 }
