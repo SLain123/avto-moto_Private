@@ -323,6 +323,10 @@ body {
   display: none;
 }
 
+.feedback__block-hidden {
+  display: none;
+}
+
 .feedback__alarm {
   font-weight: 600;
   font-size: 15px;
