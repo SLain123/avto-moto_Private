@@ -182,6 +182,7 @@ function createFeedbackBlock(obj) {
     feedPlus.innerHTML = obj.plus;
     feedMinus.innerHTML = obj.minus;
     feedComment.innerHTML = obj.comment;
+    feedRateBlock.append(generateRate(obj.rate));
 
     feedbackMainBlock.append(cloneBlock);
 }
@@ -210,6 +211,105 @@ function addNewFeedback() {
     }
 }
 
+// Функция наполняющая блок рейтинга нужными картинками звезд;
+
+function generateRate(rate) {
+    let star = rate;
+    let block = document.createElement('div');
+
+    for(let i = 0; i < 5; i++) {
+        let picture = document.createElement('picture');
+        let source = document.createElement('source');
+        let img = document.createElement('img');
+
+        source.setAttribute('type', 'image/webp');
+        img.setAttribute('alt', 'star');
+        img.classList.add('feedback__red-star');
+
+        if(star >= 1) {
+            source.setAttribute('srcset', './img/full.webp');
+            img.setAttribute('src', './img/full.png');
+            star -= 1;
+        }
+        else if(star == 0.5) {
+            source.setAttribute('srcset', './img/half.webp');
+            img.setAttribute('src', './img/half.png');
+            star -= 1;
+        }
+        else {
+            source.setAttribute('srcset', './img/empty.webp');
+            img.setAttribute('src', './img/empty.png');
+        }
+       
+        picture.append(source);
+        picture.append(img);
+        block.append(picture);
+    }
+
+    // Подфункция создает строку с рекомендацией и выводит ее в зависимости от рейтинга, выше 3;
+
+    function getWouldAdvice(rate) {  
+        let span = document.createElement('span');
+        if(rate > 3) {
+            span.classList.add('feedback__advice');
+            span.innerHTML = 'Советует';
+        }
+        return span;
+    }
+
+    block.append(getWouldAdvice(rate));
+
+    return block;
+}
 
 
+// =================================================================================================
+// Скрипт для кнопки ответить
+// =================================================================================================
 
+const mainAnswerBtn = document.querySelectorAll('.feedback__answer-link');
+const answerBlock = document.querySelectorAll('.feedback__answer');
+const closeAnswerBtn = document.querySelectorAll('.feedback__answer-close-btn');
+const sendAnswerBtn = document.querySelectorAll('.feedback__answer-btn');
+
+for(let i = 0; i < mainAnswerBtn.length; i++) {
+    mainAnswerBtn[i].addEventListener('click', expandAnswerBlock);
+}
+
+for(let i = 0; i < closeAnswerBtn.length; i++) {
+    closeAnswerBtn[i].addEventListener('click', hideAnswerBlock);
+}
+
+for(let i = 0; i < sendAnswerBtn.length; i++) {
+    sendAnswerBtn[i].addEventListener('click', saveAnswer);
+}
+
+function expandAnswerBlock(event) {
+    let currentAnswerBlock = event.target.parentElement.nextElementSibling;
+    let answerBtn = currentAnswerBlock.querySelector('.feedback__answer-btn');
+
+    currentAnswerBlock.style.animationName = 'expandAnswer';
+    currentAnswerBlock.style.animationPlayState = 'running';
+    currentAnswerBlock.style.display = 'block';
+    
+    setTimeout(() => {
+        answerBtn.style.visibility = 'visible';
+    }, 800);
+}
+
+function hideAnswerBlock() {
+    let currentAnswerBlock = event.target.parentElement.parentElement.parentElement;
+    let answerBtn = currentAnswerBlock.querySelector('.feedback__answer-btn');
+
+    currentAnswerBlock.style.animationName = 'hideAnswer';
+    currentAnswerBlock.style.animationPlayState = 'running';
+    answerBtn.style.visibility = 'hidden';
+
+    setTimeout(() => {
+        currentAnswerBlock.style.display= 'none';
+    }, 900);
+}
+
+function saveAnswer() {
+    
+}
