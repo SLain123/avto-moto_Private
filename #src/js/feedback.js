@@ -1,3 +1,5 @@
+// localStorage.clear(); // для очистки localStorage надо раскоментировать;
+
 let localArr = [{
     id: -1,
     name: 'Борис Иванов',
@@ -29,7 +31,7 @@ const feedbackPattern = document.querySelector('.feedback__block');
 
 for(let i = 0; i < rateStars.length; i++) {
     rateStars[i].addEventListener('click', function() {
-        addStar(event, i)
+        addStar(event, i);
     });
 }
 
@@ -103,8 +105,6 @@ function addStar(event, num) {
 addDefaultBlockToWeb(); // Парсит на страницу 2 дефолтных отзыва;
 addNewFeedback(); // Парсит все что есть в localStorage;
 
-// localStorage.clear(); // для очистки localStorage надо раскоментировать;
-
 // Событие нажатия на кнопку отправки отзыва
 feedSendBtn.addEventListener('click', function() {
     addDataToLocalStorage();  // Данные из полей формы добавляются в localStorage;
@@ -175,6 +175,7 @@ function createFeedbackBlock(obj) {
     let feedMinus = cloneBlock.children[2].children[2];
     let feedComment = cloneBlock.children[3].children[1];
     let feedRateBlock = cloneBlock.children[4];
+    let feedAnswerBtn = cloneBlock.children[5].children[1];
 
     cloneBlock.classList.remove('feedback__block-hidden');
     cloneBlock.setAttribute('data-id', obj.id);
@@ -183,6 +184,9 @@ function createFeedbackBlock(obj) {
     feedMinus.innerHTML = obj.minus;
     feedComment.innerHTML = obj.comment;
     feedRateBlock.append(generateRate(obj.rate));
+    feedAnswerBtn.addEventListener('click', function() { // Вешает событие на кнопку "ответить" под отзывом;
+        expandAnswerBlock(event);
+    });
 
     feedbackMainBlock.append(cloneBlock);
 }
@@ -192,10 +196,12 @@ function createFeedbackBlock(obj) {
 function checkId(obj) {
     let result = false;
     for(let i = 3; i < feedbackMainBlock.children.length; i++) {
+        if(obj.id != null) {
             if(feedbackMainBlock.children[i].getAttribute('data-id') == obj.id) {
                 result = true;
             }
         }
+    }
     return result;
 }
 
@@ -263,6 +269,7 @@ function generateRate(rate) {
 }
 
 
+
 // =================================================================================================
 // Скрипт для кнопки ответить
 // =================================================================================================
@@ -271,45 +278,75 @@ const mainAnswerBtn = document.querySelectorAll('.feedback__answer-link');
 const answerBlock = document.querySelectorAll('.feedback__answer');
 const closeAnswerBtn = document.querySelectorAll('.feedback__answer-close-btn');
 const sendAnswerBtn = document.querySelectorAll('.feedback__answer-btn');
+const modarateMessageWindow = document.querySelector('.feedback__modarate-message');
 
-for(let i = 0; i < mainAnswerBtn.length; i++) {
-    mainAnswerBtn[i].addEventListener('click', expandAnswerBlock);
-}
 
-for(let i = 0; i < closeAnswerBtn.length; i++) {
-    closeAnswerBtn[i].addEventListener('click', hideAnswerBlock);
-}
 
-for(let i = 0; i < sendAnswerBtn.length; i++) {
-    sendAnswerBtn[i].addEventListener('click', saveAnswer);
-}
+// Функция раскрывающая блок для введения ответа на отзыв + вешает событие на кнопки 'закрыть' и 'отправить';
 
 function expandAnswerBlock(event) {
     let currentAnswerBlock = event.target.parentElement.nextElementSibling;
     let answerBtn = currentAnswerBlock.querySelector('.feedback__answer-btn');
+    let closeBtn = event.target.parentElement.nextElementSibling.children[2];
+    let sendBtn = event.target.parentElement.nextElementSibling.children[1];
+    let textArea = event.target.parentElement.nextElementSibling.children[0];
 
     currentAnswerBlock.style.animationName = 'expandAnswer';
     currentAnswerBlock.style.animationPlayState = 'running';
     currentAnswerBlock.style.display = 'block';
+    textArea.style.border = '1px solid black';
+
+    closeBtn.addEventListener('click', function() { // Вешает событие на кнопку закрыть в блоке ответа;
+        hideAnswerBlock(event);
+        });
+
+    sendBtn.addEventListener('click', function() { // Вешает событие на кнопку отправить в блоке ответа;
+        checkAnswer(event);
+        });
     
-    setTimeout(() => {
+    setTimeout(function() {
         answerBtn.style.visibility = 'visible';
     }, 800);
 }
 
-function hideAnswerBlock() {
-    let currentAnswerBlock = event.target.parentElement.parentElement.parentElement;
+// Функция скрывает блок для введения ответа на отзыв, принимает событие нажатия на объект и аргумент кем именно данный объект является
+// (Кнопка 'закрыть' или 'отправить')
+
+function hideAnswerBlock(event, when) {
+    let currentAnswerBlock = event.target.parentElement.nextElementSibling;
     let answerBtn = currentAnswerBlock.querySelector('.feedback__answer-btn');
 
     currentAnswerBlock.style.animationName = 'hideAnswer';
     currentAnswerBlock.style.animationPlayState = 'running';
     answerBtn.style.visibility = 'hidden';
 
-    setTimeout(() => {
+    setTimeout(function() {
         currentAnswerBlock.style.display= 'none';
     }, 900);
 }
 
-function saveAnswer() {
-    
+// Функция проверяет было ли заполнено поле ответа;
+
+function checkAnswer(event) {
+    let textArea = event.target.parentElement.nextElementSibling.children[0];
+
+    if(textArea.value == '') {
+        textArea.style.border = '2px solid red';
+    }
+    else {
+        textArea.style.border = '1px solid black';
+        textArea.value = '';
+        hideAnswerBlock(event);
+        getModerateMessage();
+    }
+}
+
+// Функция выдает окно "Ответ на модерации";
+
+function getModerateMessage() {
+    modarateMessageWindow.style.display = 'flex';
+
+    setTimeout(function() {
+        modarateMessageWindow.style.display = 'none';
+    }, 3000);
 }
