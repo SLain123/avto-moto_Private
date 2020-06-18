@@ -862,6 +862,16 @@ body {
   color: #FF0000;
   margin: 0;
   visibility: hidden;
+  display: block;
+  position: relative;
+}
+
+.feed-window__error:before {
+  content: '*';
+  color: #D12136;
+  position: absolute;
+  bottom: -25px;
+  left: 10px;
 }
 
 .feed-window__rate {

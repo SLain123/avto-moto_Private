@@ -314,9 +314,11 @@ addNewFeedback(); // Парсит все что есть в localStorage;
 
 // Событие нажатия на кнопку отправки отзыва
 feedSendBtn.addEventListener('click', function() {
-    addDataToLocalStorage();  // Данные из полей формы добавляются в localStorage;
-    addNewFeedback();         // Парсит все что есть в localStorage;
-    cleanFormAfterSend();     // Очищает форму отправки и закрывает модальное окно;
+    if(checkNecessaryInputs()) {   // Проверяет заполнены ли все обязательные поля;
+        addDataToLocalStorage();  // Данные из полей формы добавляются в localStorage;
+        addNewFeedback();         // Парсит все что есть в localStorage;
+        cleanFormAfterSend();     // Очищает форму отправки и закрывает модальное окно;
+    }
 });
 
 // Функция парсит на страницу все что есть в массиве localArr (деволтные отзывы);
@@ -325,6 +327,47 @@ function addDefaultBlockToWeb() {
     for(let i = 0; i < localArr.length; i++) {
         createFeedbackBlock(localArr[i]);
     }
+}
+
+// Функция проверки обязательных полей в форме отправки;
+
+function checkNecessaryInputs() {
+    let check;
+    let red = '1px red solid';
+    let black = '1px solid rgba(72, 73, 77, 0.2)';
+    let errorForName = feedName.previousElementSibling;
+    let errorForComment  = feedComment.previousElementSibling;
+
+    if(feedName.value == '' && feedComment.value == '') {
+        check = false;
+        getError(feedName, red, errorForName, 'visible');
+        getError(feedComment, red, errorForComment, 'visible');
+    }
+    else if(feedName.value == '') {
+        check = false;
+        getError(feedName, red, errorForName, 'visible');
+        getError(feedComment, black, errorForComment, 'hidden');
+    }
+    else if(feedComment.value == '') {
+        check = false;
+        getError(feedComment, red, errorForComment, 'visible');
+        getError(feedName, black, errorForName, 'hidden');
+    }
+    else {
+        check = true;
+        getError(feedName, black, errorForName, 'hidden');
+        getError(feedComment, black, errorForComment, 'hidden');
+    }
+
+    // Подфункция назначающая цвет бордера для обязательного поля, 
+    // а также отображающая или скрывающая предупреждение;
+
+    function getError(elem, color, errorText, prop) {
+        elem.style.border = color;
+        errorText.style.visibility = prop;
+    }
+
+    return check;
 }
 
 // Функция очистки формы и скрытия модального окна;
