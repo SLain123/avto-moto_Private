@@ -27,6 +27,7 @@ const feedSendBtn = document.querySelector('.feed-window__send-btn');
 const feedbackMainBlock = document.querySelector('.feedback');
 const feedbackPattern = document.querySelector('.feedback__block');
 
+
 // Событие нажатия на одну из звезд рейтинга;
 
 for(let i = 0; i < rateStars.length; i++) {
@@ -171,6 +172,15 @@ function cleanFormAfterSend() {
     feedMinus.value = '';
     feedComment.value = '';
 
+    // Подункция обнуления выбранных звезд в модальном окне написания отзывов
+
+    function cleanStar() {
+        for(let i = 0; i < rateStars.length; i++) {
+            rateStars[i].setAttribute('src', './img/empty.png');
+            rateStars[i].previousElementSibling.setAttribute('srcset', './img/empty.webp');
+        }
+}
+    cleanStar();
     hideModalWindow();
 }
 
@@ -371,6 +381,7 @@ function hideAnswerBlock(event, when) {
 // Функция проверяет было ли заполнено поле ответа;
 
 function checkAnswer(event) {
+    event.preventDefault();
     let textArea = event.target.parentElement.nextElementSibling.children[0];
 
     if(textArea.value == '') {

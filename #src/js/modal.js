@@ -8,11 +8,15 @@ const nameInput = document.querySelector('.feed-window__column-one input');
 // События нажатия кнопок;
 
 feedbackOpenBtn.addEventListener('click', displayModalWindow);
-feedbackCloseBtn.addEventListener('click', hideModalWindow);
+feedbackCloseBtn.addEventListener('click', function() {
+    hideModalWindow();
+    cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
+});
 modalBackground.addEventListener('click', checkTarget);
 document.addEventListener('keydown', function() {           // событие esc для закрытия модального окна;
     if(event.key == 'Escape') {
         hideModalWindow();
+        cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
     }
 });
 
@@ -55,5 +59,6 @@ function hideModalWindow() {
 function checkTarget(event) {
     if(event.target != modalFeedbackWindow) {
         hideModalWindow();
+        cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
     }
 }

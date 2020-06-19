@@ -155,11 +155,15 @@ const nameInput = document.querySelector('.feed-window__column-one input');
 // События нажатия кнопок;
 
 feedbackOpenBtn.addEventListener('click', displayModalWindow);
-feedbackCloseBtn.addEventListener('click', hideModalWindow);
+feedbackCloseBtn.addEventListener('click', function() {
+    hideModalWindow();
+    cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
+});
 modalBackground.addEventListener('click', checkTarget);
 document.addEventListener('keydown', function() {           // событие esc для закрытия модального окна;
     if(event.key == 'Escape') {
         hideModalWindow();
+        cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
     }
 });
 
@@ -202,6 +206,7 @@ function hideModalWindow() {
 function checkTarget(event) {
     if(event.target != modalFeedbackWindow) {
         hideModalWindow();
+        cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
     }
 }
  // Подключение модального окна с формой отзывов;
@@ -233,6 +238,7 @@ const rateStars = document.querySelectorAll('.feed-window__rate img');
 const feedSendBtn = document.querySelector('.feed-window__send-btn');
 const feedbackMainBlock = document.querySelector('.feedback');
 const feedbackPattern = document.querySelector('.feedback__block');
+
 
 // Событие нажатия на одну из звезд рейтинга;
 
@@ -378,6 +384,15 @@ function cleanFormAfterSend() {
     feedMinus.value = '';
     feedComment.value = '';
 
+    // Подункция обнуления выбранных звезд в модальном окне написания отзывов
+
+    function cleanStar() {
+        for(let i = 0; i < rateStars.length; i++) {
+            rateStars[i].setAttribute('src', './img/empty.png');
+            rateStars[i].previousElementSibling.setAttribute('srcset', './img/empty.webp');
+        }
+}
+    cleanStar();
     hideModalWindow();
 }
 
@@ -578,6 +593,7 @@ function hideAnswerBlock(event, when) {
 // Функция проверяет было ли заполнено поле ответа;
 
 function checkAnswer(event) {
+    event.preventDefault();
     let textArea = event.target.parentElement.nextElementSibling.children[0];
 
     if(textArea.value == '') {
