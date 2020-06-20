@@ -61,6 +61,8 @@ function addStar(event, num) {
     
         elem.setAttribute('src', './img/full.png');
         elem.setAttribute('data-rate', '1');
+        elem.setAttribute('width', '28');
+        elem.setAttribute('height', '28');
     }
 
     // Подфункция закрашивания половины звезды;
@@ -72,6 +74,8 @@ function addStar(event, num) {
     
         elem.setAttribute('src', './img/half.png');
         elem.setAttribute('data-rate', '0.5');
+        elem.setAttribute('width', '28');
+        elem.setAttribute('height', '28');
     }
 
     // Подфункция очищающая застрихованную звезду;
@@ -83,6 +87,8 @@ function addStar(event, num) {
     
         elem.setAttribute('src', './img/empty.png');
         elem.setAttribute('data-rate', '0');
+        elem.setAttribute('width', '28');
+        elem.setAttribute('height', '28');
     }
 
     // Подфункция перебирающая все звезды вокруг текущей и назначающая им штриховку или пустоту;
@@ -178,6 +184,8 @@ function cleanFormAfterSend() {
         for(let i = 0; i < rateStars.length; i++) {
             rateStars[i].setAttribute('src', './img/empty.png');
             rateStars[i].previousElementSibling.setAttribute('srcset', './img/empty.webp');
+            rateStars[i].setAttribute('width', '28');
+            rateStars[i].setAttribute('height', '28');
         }
 }
     cleanStar();
@@ -283,21 +291,29 @@ function generateRate(rate) {
 
         source.setAttribute('type', 'image/webp');
         img.setAttribute('alt', 'star');
+        img.setAttribute('width', '28');
+        img.setAttribute('height', '28');
         img.classList.add('feedback__red-star');
 
         if(star >= 1) {
             source.setAttribute('srcset', './img/full.webp');
             img.setAttribute('src', './img/full.png');
+            img.setAttribute('width', '28');
+            img.setAttribute('height', '28');
             star -= 1;
         }
         else if(star == 0.5) {
             source.setAttribute('srcset', './img/half.webp');
             img.setAttribute('src', './img/half.png');
+            img.setAttribute('width', '28');
+            img.setAttribute('height', '28');
             star -= 1;
         }
         else {
             source.setAttribute('srcset', './img/empty.webp');
             img.setAttribute('src', './img/empty.png');
+            img.setAttribute('width', '28');
+            img.setAttribute('height', '28');
         }
        
         picture.append(source);
