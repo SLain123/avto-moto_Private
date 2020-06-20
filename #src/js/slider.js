@@ -1,21 +1,21 @@
-const allSlides = document.querySelectorAll('.slider__item');
-const leftBtn = document.querySelector('.slider__btn-left');
-const rightBtn = document.querySelector('.slider__btn-right');
-const allMiniPictures = document.querySelectorAll('.slider__mini-pic');
+const ALL_SLIDES = document.querySelectorAll('.slider__item');
+const LEFT_BTN = document.querySelector('.slider__btn-left');
+const RIGHT_BTN = document.querySelector('.slider__btn-right');
+const ALL_MINI_PICTURES = document.querySelectorAll('.slider__mini-pic');
 
 // Событие на кнопки
 
-leftBtn.addEventListener('click', function() {
+LEFT_BTN.addEventListener('click', function() {
     moveSlideFromBtn(-1);
 });
-rightBtn.addEventListener('click', function() {
+RIGHT_BTN.addEventListener('click', function() {
     moveSlideFromBtn(1);
 });
 
 // Событие нажатия по мини картинке под слайдером
 
-for(let i = 0; i < allMiniPictures.length; i++) {
-    allMiniPictures[i].addEventListener('click', function() {
+for(let i = 0; i < ALL_MINI_PICTURES.length; i++) {
+    ALL_MINI_PICTURES[i].addEventListener('click', function() {
         moveSlideFromPic(i);
     });
 }
@@ -55,8 +55,8 @@ function moveSlideFromPic(num) {
 // Находит текущий (выбранный) слайд;
 
 function findCurrentSlide() {
-    for(let i = 0; i < allSlides.length; i++) {
-        if(!allSlides[i].classList.contains('slider__item-opacity')) {
+    for(let i = 0; i < ALL_SLIDES.length; i++) {
+        if(!ALL_SLIDES[i].classList.contains('slider__item-opacity')) {
             return (i);
         }
     }
@@ -66,26 +66,26 @@ function findCurrentSlide() {
 
 function checkAvailabilityButtons(current) {
     if(current == 0) {
-        leftBtn.setAttribute('disabled', '');
-        rightBtn.removeAttribute('disabled', '');
+        LEFT_BTN.setAttribute('disabled', '');
+        RIGHT_BTN.removeAttribute('disabled', '');
     }
-    else if(current == allSlides.length - 1) {
-        leftBtn.removeAttribute('disabled', '');
-        rightBtn.setAttribute('disabled', '');
+    else if(current == ALL_SLIDES.length - 1) {
+        LEFT_BTN.removeAttribute('disabled', '');
+        RIGHT_BTN.setAttribute('disabled', '');
     }
     else {
-        leftBtn.removeAttribute('disabled', '');
-        rightBtn.removeAttribute('disabled', '');
+        LEFT_BTN.removeAttribute('disabled', '');
+        RIGHT_BTN.removeAttribute('disabled', '');
     }
 }
 
 // Скрывает все слайды кроме текущего который нужно отобразить;
 
 function displayRightSlide(numOfSlide) {
-    for(let i = 0; i < allSlides.length; i++) {
+    for(let i = 0; i < ALL_SLIDES.length; i++) {
         if(numOfSlide == i) {
-            allSlides[i].classList.remove('slider__item-opacity');
+            ALL_SLIDES[i].classList.remove('slider__item-opacity');
         }
-        else allSlides[i].classList.add('slider__item-opacity');
+        else ALL_SLIDES[i].classList.add('slider__item-opacity');
     }
 }

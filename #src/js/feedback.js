@@ -17,21 +17,21 @@ let localArr = [{
     rate: 4.5
 }];
 
-const allInputs = document.querySelectorAll('.feed-window__column-one input');
-const feedName = allInputs[0];
-const feedPlus = allInputs[1];
-const feedMinus = allInputs[2];
-const feedComment = document.querySelector('.feed-window__column-two textarea');
-const rateStars = document.querySelectorAll('.feed-window__rate img');
-const feedSendBtn = document.querySelector('.feed-window__send-btn');
-const feedbackMainBlock = document.querySelector('.feedback');
-const feedbackPattern = document.querySelector('.feedback__block');
+const ALL_INPUTS = document.querySelectorAll('.feed-window__column-one input');
+const FEED_NAME = ALL_INPUTS[0];
+const FEED_PLUS = ALL_INPUTS[1];
+const FEED_MINUS = ALL_INPUTS[2];
+const FEED_COMMENT = document.querySelector('.feed-window__column-two textarea');
+const RATE_STARS = document.querySelectorAll('.feed-window__rate img');
+const FEED_SEND_BTN = document.querySelector('.feed-window__send-btn');
+const FEEDBACK_MAIN_BLOCK = document.querySelector('.feedback');
+const FEEDBACK_PATTERN = document.querySelector('.feedback__block');
 
 
 // Событие нажатия на одну из звезд рейтинга;
 
-for(let i = 0; i < rateStars.length; i++) {
-    rateStars[i].addEventListener('click', function() {
+for(let i = 0; i < RATE_STARS.length; i++) {
+    RATE_STARS[i].addEventListener('click', function() {
         addStar(event, i);
     });
 }
@@ -94,12 +94,12 @@ function addStar(event, num) {
     // Подфункция перебирающая все звезды вокруг текущей и назначающая им штриховку или пустоту;
 
     function checkAllStars(num) {
-        for(let i = 0; i < rateStars.length; i++) {
+        for(let i = 0; i < RATE_STARS.length; i++) {
             if(i < num) {
-                setFullStar(rateStars[i]);
+                setFullStar(RATE_STARS[i]);
             }
             else if(i > num) {
-                setEmptyStar(rateStars[i]);
+                setEmptyStar(RATE_STARS[i]);
             }
         }
     }
@@ -113,7 +113,7 @@ addDefaultBlockToWeb(); // Парсит на страницу 2 дефолтны
 addNewFeedback(); // Парсит все что есть в localStorage;
 
 // Событие нажатия на кнопку отправки отзыва
-feedSendBtn.addEventListener('click', function() {
+FEED_SEND_BTN.addEventListener('click', function() {
     if(checkNecessaryInputs()) {   // Проверяет заполнены ли все обязательные поля;
         addDataToLocalStorage();  // Данные из полей формы добавляются в localStorage;
         addNewFeedback();         // Парсит все что есть в localStorage;
@@ -135,28 +135,28 @@ function checkNecessaryInputs() {
     let check;
     let red = '1px red solid';
     let black = '1px solid rgba(72, 73, 77, 0.2)';
-    let errorForName = feedName.previousElementSibling;
-    let errorForComment  = feedComment.previousElementSibling;
+    let errorForName = FEED_NAME.previousElementSibling;
+    let errorForComment  = FEED_COMMENT.previousElementSibling;
 
-    if(feedName.value == '' && feedComment.value == '') {
+    if(FEED_NAME.value == '' && FEED_COMMENT.value == '') {
         check = false;
-        getError(feedName, red, errorForName, 'visible');
-        getError(feedComment, red, errorForComment, 'visible');
+        getError(FEED_NAME, red, errorForName, 'visible');
+        getError(FEED_COMMENT, red, errorForComment, 'visible');
     }
-    else if(feedName.value == '') {
+    else if(FEED_NAME.value == '') {
         check = false;
-        getError(feedName, red, errorForName, 'visible');
-        getError(feedComment, black, errorForComment, 'hidden');
+        getError(FEED_NAME, red, errorForName, 'visible');
+        getError(FEED_COMMENT, black, errorForComment, 'hidden');
     }
-    else if(feedComment.value == '') {
+    else if(FEED_COMMENT.value == '') {
         check = false;
-        getError(feedComment, red, errorForComment, 'visible');
-        getError(feedName, black, errorForName, 'hidden');
+        getError(FEED_COMMENT, red, errorForComment, 'visible');
+        getError(FEED_NAME, black, errorForName, 'hidden');
     }
     else {
         check = true;
-        getError(feedName, black, errorForName, 'hidden');
-        getError(feedComment, black, errorForComment, 'hidden');
+        getError(FEED_NAME, black, errorForName, 'hidden');
+        getError(FEED_COMMENT, black, errorForComment, 'hidden');
     }
 
     // Подфункция назначающая цвет бордера для обязательного поля, 
@@ -173,19 +173,19 @@ function checkNecessaryInputs() {
 // Функция очистки формы и скрытия модального окна;
 
 function cleanFormAfterSend() {
-    feedName.value = '';
-    feedPlus.value = '';
-    feedMinus.value = '';
-    feedComment.value = '';
+    FEED_NAME.value = '';
+    FEED_PLUS.value = '';
+    FEED_MINUS.value = '';
+    FEED_COMMENT.value = '';
 
     // Подункция обнуления выбранных звезд в модальном окне написания отзывов
 
     function cleanStar() {
-        for(let i = 0; i < rateStars.length; i++) {
-            rateStars[i].setAttribute('src', './img/empty.png');
-            rateStars[i].previousElementSibling.setAttribute('srcset', './img/empty.webp');
-            rateStars[i].setAttribute('width', '28');
-            rateStars[i].setAttribute('height', '28');
+        for(let i = 0; i < RATE_STARS.length; i++) {
+            RATE_STARS[i].setAttribute('src', './img/empty.png');
+            RATE_STARS[i].previousElementSibling.setAttribute('srcset', './img/empty.webp');
+            RATE_STARS[i].setAttribute('width', '28');
+            RATE_STARS[i].setAttribute('height', '28');
         }
 }
     cleanStar();
@@ -198,10 +198,10 @@ function addDataToStorage() {
     let newFeedback = {};
 
     newFeedback.id = localStorage.length + 1;
-    newFeedback.name = feedName.value;
-    newFeedback.plus = feedPlus.value;
-    newFeedback.minus = feedMinus.value;
-    newFeedback.comment = feedComment.value;
+    newFeedback.name = FEED_NAME.value;
+    newFeedback.plus = FEED_PLUS.value;
+    newFeedback.minus = FEED_MINUS.value;
+    newFeedback.comment = FEED_COMMENT.value;
     newFeedback.rate = getRate();
 
     // Подфункция которая считает выбранный рейтинг и возвращает значение рейтинга для объекта-отзыва;
@@ -209,8 +209,8 @@ function addDataToStorage() {
     function getRate() {
         let result = 0;
 
-        for(let i = 0; i < rateStars.length; i++) {
-            result += Number(rateStars[i].getAttribute('data-rate'));
+        for(let i = 0; i < RATE_STARS.length; i++) {
+            result += Number(RATE_STARS[i].getAttribute('data-rate'));
         }
 
         return result;
@@ -230,35 +230,35 @@ function addDataToLocalStorage() {
 // Функция конструктор блока отзывов;
 
 function createFeedbackBlock(obj) {
-    let cloneBlock = feedbackPattern.cloneNode(true);
-    let feedName = cloneBlock.children[0];
-    let feedPlus = cloneBlock.children[1].children[2];
-    let feedMinus = cloneBlock.children[2].children[2];
-    let feedComment = cloneBlock.children[3].children[1];
+    let cloneBlock = FEEDBACK_PATTERN.cloneNode(true);
+    let FEED_NAME = cloneBlock.children[0];
+    let FEED_PLUS = cloneBlock.children[1].children[2];
+    let FEED_MINUS = cloneBlock.children[2].children[2];
+    let FEED_COMMENT = cloneBlock.children[3].children[1];
     let feedRateBlock = cloneBlock.children[4];
     let feedAnswerBtn = cloneBlock.children[5].children[1];
 
     cloneBlock.classList.remove('feedback__block-hidden');
     cloneBlock.setAttribute('data-id', obj.id);
-    feedName.innerHTML = obj.name;
-    feedPlus.innerHTML = obj.plus;
-    feedMinus.innerHTML = obj.minus;
-    feedComment.innerHTML = obj.comment;
+    FEED_NAME.innerHTML = obj.name;
+    FEED_PLUS.innerHTML = obj.plus;
+    FEED_MINUS.innerHTML = obj.minus;
+    FEED_COMMENT.innerHTML = obj.comment;
     feedRateBlock.append(generateRate(obj.rate));
     feedAnswerBtn.addEventListener('click', function() { // Вешает событие на кнопку "ответить" под отзывом;
         expandAnswerBlock(event);
     });
 
-    feedbackMainBlock.append(cloneBlock);
+    FEEDBACK_MAIN_BLOCK.append(cloneBlock);
 }
 
 // Функция проверяет есть ли отзыв на странице по data-id в блоке и id из localStorage.id;
 
 function checkId(obj) {
     let result = false;
-    for(let i = 3; i < feedbackMainBlock.children.length; i++) {
+    for(let i = 3; i < FEEDBACK_MAIN_BLOCK.children.length; i++) {
         if(obj.id != null) {
-            if(feedbackMainBlock.children[i].getAttribute('data-id') == obj.id) {
+            if(FEEDBACK_MAIN_BLOCK.children[i].getAttribute('data-id') == obj.id) {
                 result = true;
             }
         }
@@ -343,13 +343,7 @@ function generateRate(rate) {
 // Скрипт для кнопки ответить
 // =================================================================================================
 
-const mainAnswerBtn = document.querySelectorAll('.feedback__answer-link');
-const answerBlock = document.querySelectorAll('.feedback__answer');
-const closeAnswerBtn = document.querySelectorAll('.feedback__answer-close-btn');
-const sendAnswerBtn = document.querySelectorAll('.feedback__answer-btn');
-const modarateMessageWindow = document.querySelector('.feedback__modarate-message');
-
-
+const MODERATE_MESSAGE_WINDOW = document.querySelector('.feedback__modarate-message');
 
 // Функция раскрывающая блок для введения ответа на отзыв + вешает событие на кнопки 'закрыть' и 'отправить';
 
@@ -414,9 +408,9 @@ function checkAnswer(event) {
 // Функция выдает окно "Ответ на модерации";
 
 function getModerateMessage() {
-    modarateMessageWindow.style.display = 'flex';
+    MODERATE_MESSAGE_WINDOW.style.display = 'flex';
 
     setTimeout(function() {
-        modarateMessageWindow.style.display = 'none';
+        MODERATE_MESSAGE_WINDOW.style.display = 'none';
     }, 3000);
 }

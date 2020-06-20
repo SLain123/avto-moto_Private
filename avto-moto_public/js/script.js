@@ -16,24 +16,24 @@ function testWebP(callback) {
     document.querySelector('body').classList.add('no-webp');
     }
     }); // Подключение скрипта для проверки поддержки webp формата и выбора правильного формата в css;
-const allSlides = document.querySelectorAll('.slider__item');
-const leftBtn = document.querySelector('.slider__btn-left');
-const rightBtn = document.querySelector('.slider__btn-right');
-const allMiniPictures = document.querySelectorAll('.slider__mini-pic');
+const ALL_SLIDES = document.querySelectorAll('.slider__item');
+const LEFT_BTN = document.querySelector('.slider__btn-left');
+const RIGHT_BTN = document.querySelector('.slider__btn-right');
+const ALL_MINI_PICTURES = document.querySelectorAll('.slider__mini-pic');
 
 // Событие на кнопки
 
-leftBtn.addEventListener('click', function() {
+LEFT_BTN.addEventListener('click', function() {
     moveSlideFromBtn(-1);
 });
-rightBtn.addEventListener('click', function() {
+RIGHT_BTN.addEventListener('click', function() {
     moveSlideFromBtn(1);
 });
 
 // Событие нажатия по мини картинке под слайдером
 
-for(let i = 0; i < allMiniPictures.length; i++) {
-    allMiniPictures[i].addEventListener('click', function() {
+for(let i = 0; i < ALL_MINI_PICTURES.length; i++) {
+    ALL_MINI_PICTURES[i].addEventListener('click', function() {
         moveSlideFromPic(i);
     });
 }
@@ -73,8 +73,8 @@ function moveSlideFromPic(num) {
 // Находит текущий (выбранный) слайд;
 
 function findCurrentSlide() {
-    for(let i = 0; i < allSlides.length; i++) {
-        if(!allSlides[i].classList.contains('slider__item-opacity')) {
+    for(let i = 0; i < ALL_SLIDES.length; i++) {
+        if(!ALL_SLIDES[i].classList.contains('slider__item-opacity')) {
             return (i);
         }
     }
@@ -84,39 +84,39 @@ function findCurrentSlide() {
 
 function checkAvailabilityButtons(current) {
     if(current == 0) {
-        leftBtn.setAttribute('disabled', '');
-        rightBtn.removeAttribute('disabled', '');
+        LEFT_BTN.setAttribute('disabled', '');
+        RIGHT_BTN.removeAttribute('disabled', '');
     }
-    else if(current == allSlides.length - 1) {
-        leftBtn.removeAttribute('disabled', '');
-        rightBtn.setAttribute('disabled', '');
+    else if(current == ALL_SLIDES.length - 1) {
+        LEFT_BTN.removeAttribute('disabled', '');
+        RIGHT_BTN.setAttribute('disabled', '');
     }
     else {
-        leftBtn.removeAttribute('disabled', '');
-        rightBtn.removeAttribute('disabled', '');
+        LEFT_BTN.removeAttribute('disabled', '');
+        RIGHT_BTN.removeAttribute('disabled', '');
     }
 }
 
 // Скрывает все слайды кроме текущего который нужно отобразить;
 
 function displayRightSlide(numOfSlide) {
-    for(let i = 0; i < allSlides.length; i++) {
+    for(let i = 0; i < ALL_SLIDES.length; i++) {
         if(numOfSlide == i) {
-            allSlides[i].classList.remove('slider__item-opacity');
+            ALL_SLIDES[i].classList.remove('slider__item-opacity');
         }
-        else allSlides[i].classList.add('slider__item-opacity');
+        else ALL_SLIDES[i].classList.add('slider__item-opacity');
     }
 }  // Подключение слайдера;
-const allTabs = document.querySelectorAll('.product-description__control-block button');
-const charactersBlock = document.querySelector('.characters-block');
-const feedbackBlock = document.querySelector('.feedback');
-const contactBlock = document.querySelector('.contact');
-const arrOfBlocks = [charactersBlock, feedbackBlock, contactBlock];  // массив блоков-разделов;
+const ALL_TABS = document.querySelectorAll('.product-description__control-block button');
+const CHARACTERS_BLOCK = document.querySelector('.characters-block');
+const FEEDBACK_BLOCK = document.querySelector('.feedback');
+const CONTACT_BLOCK = document.querySelector('.contact');
+const ARR_OF_BLOCKS = [CHARACTERS_BLOCK, FEEDBACK_BLOCK, CONTACT_BLOCK];  // массив блоков-разделов;
 
 // События на кнопки
 
-for(let i = 0; i < allTabs.length; i++) {
-    allTabs[i].addEventListener('click', function() {
+for(let i = 0; i < ALL_TABS.length; i++) {
+    ALL_TABS[i].addEventListener('click', function() {
         changeColorButtons(i);
         displaySelectSection(i);
     })
@@ -125,41 +125,40 @@ for(let i = 0; i < allTabs.length; i++) {
 // Функция скрывает все не выбранные блоки и отображает один выбранный по табу;
 
 function displaySelectSection(numberOfButton) {
-    for(let i = 0; i < arrOfBlocks.length; i++) {
+    for(let i = 0; i < ARR_OF_BLOCKS.length; i++) {
         if(i == numberOfButton) {
-            arrOfBlocks[i].style.display = 'block';
+            ARR_OF_BLOCKS[i].style.display = 'block';
         }
-        else arrOfBlocks[i].style.display = 'none';
+        else ARR_OF_BLOCKS[i].style.display = 'none';
     }
 }
 
 // Функция переопределяет классы для активной кнопки, окрашивает активную в красный стиль;
 
 function changeColorButtons(numberOfSelectButton) {
-    for(let i = 0; i < allTabs.length; i++) {
+    for(let i = 0; i < ALL_TABS.length; i++) {
         if(i == numberOfSelectButton) {
-            allTabs[i].classList.add('product-description__btn-active');
+            ALL_TABS[i].classList.add('product-description__btn-active');
         }
-        else allTabs[i].classList.remove('product-description__btn-active');
+        else ALL_TABS[i].classList.remove('product-description__btn-active');
     }
 }
 
  // Переключение разделов по табам;
-const feedbackOpenBtn = document.querySelector('.feedback__send-btn');
-const modalBackground = document.querySelector('.modal');
-const modalFeedbackWindow = document.querySelector('.feed-window');
-const feedbackSendBtn = document.querySelector('.feed-window__send-btn');
-const feedbackCloseBtn = document.querySelector('.feed-window__close-btn');
-const nameInput = document.querySelector('.feed-window__column-one input');
+const FEEDBACK_OPEN_BTN = document.querySelector('.feedback__send-btn');
+const MODAL_BACKGROUND = document.querySelector('.modal');
+const MODAL_FEEDBACK_WINDOW = document.querySelector('.feed-window');
+const FEEDBACK_CLOSE_BTN = document.querySelector('.feed-window__close-btn');
+const NAME_INPUT = document.querySelector('.feed-window__column-one input');
 
 // События нажатия кнопок;
 
-feedbackOpenBtn.addEventListener('click', displayModalWindow);
-feedbackCloseBtn.addEventListener('click', function() {
+FEEDBACK_OPEN_BTN.addEventListener('click', displayModalWindow);
+FEEDBACK_CLOSE_BTN.addEventListener('click', function() {
     hideModalWindow();
     cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
 });
-modalBackground.addEventListener('click', checkTarget);
+MODAL_BACKGROUND.addEventListener('click', checkTarget);
 document.addEventListener('keydown', function() {           // событие esc для закрытия модального окна;
     if(event.key == 'Escape') {
         hideModalWindow();
@@ -170,32 +169,32 @@ document.addEventListener('keydown', function() {           // событие es
 // Функция отображающая модальное окно с формой для отправки заявки;
 
 function displayModalWindow() {
-    modalBackground.style.display = 'flex';
-    modalBackground.style.animationName= 'visible';
-    modalBackground.style.animationPlayState = 'running';
+    MODAL_BACKGROUND.style.display = 'flex';
+    MODAL_BACKGROUND.style.animationName= 'visible';
+    MODAL_BACKGROUND.style.animationPlayState = 'running';
 
-    modalFeedbackWindow.style.display = 'flex';
-    modalFeedbackWindow.style.animationName= 'visible';
-    modalFeedbackWindow.style.animationPlayState = 'running';
+    MODAL_FEEDBACK_WINDOW.style.display = 'flex';
+    MODAL_FEEDBACK_WINDOW.style.animationName= 'visible';
+    MODAL_FEEDBACK_WINDOW.style.animationPlayState = 'running';
 
     document.querySelector('body').classList.add('no-scroll');
 
-    nameInput.focus();
+    NAME_INPUT.focus();
 }
 
 // Функция скрывающая модальное окно с формой для отправки заявки;
 
 function hideModalWindow() {
-    modalBackground.style.animationName= 'hidden';
+    MODAL_BACKGROUND.style.animationName= 'hidden';
 
     setTimeout(function() {
-        modalBackground.style.display= 'none';
+        MODAL_BACKGROUND.style.display= 'none';
     }, 475);
 
-    modalFeedbackWindow.style.animationName= 'hidden';
+    MODAL_FEEDBACK_WINDOW.style.animationName= 'hidden';
 
     setTimeout(function() {
-        modalFeedbackWindow.style.display= 'none';
+        MODAL_FEEDBACK_WINDOW.style.display= 'none';
     }, 475);
 
     document.querySelector('body').classList.remove('no-scroll');
@@ -204,7 +203,7 @@ function hideModalWindow() {
 // Функция проверки места клика, определяет был ли клик за блоком отзывов;
 
 function checkTarget(event) {
-    if(event.target != modalFeedbackWindow) {
+    if(event.target != MODAL_FEEDBACK_WINDOW) {
         hideModalWindow();
         cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
     }
@@ -229,21 +228,21 @@ let localArr = [{
     rate: 4.5
 }];
 
-const allInputs = document.querySelectorAll('.feed-window__column-one input');
-const feedName = allInputs[0];
-const feedPlus = allInputs[1];
-const feedMinus = allInputs[2];
-const feedComment = document.querySelector('.feed-window__column-two textarea');
-const rateStars = document.querySelectorAll('.feed-window__rate img');
-const feedSendBtn = document.querySelector('.feed-window__send-btn');
-const feedbackMainBlock = document.querySelector('.feedback');
-const feedbackPattern = document.querySelector('.feedback__block');
+const ALL_INPUTS = document.querySelectorAll('.feed-window__column-one input');
+const FEED_NAME = ALL_INPUTS[0];
+const FEED_PLUS = ALL_INPUTS[1];
+const FEED_MINUS = ALL_INPUTS[2];
+const FEED_COMMENT = document.querySelector('.feed-window__column-two textarea');
+const RATE_STARS = document.querySelectorAll('.feed-window__rate img');
+const FEED_SEND_BTN = document.querySelector('.feed-window__send-btn');
+const FEEDBACK_MAIN_BLOCK = document.querySelector('.feedback');
+const FEEDBACK_PATTERN = document.querySelector('.feedback__block');
 
 
 // Событие нажатия на одну из звезд рейтинга;
 
-for(let i = 0; i < rateStars.length; i++) {
-    rateStars[i].addEventListener('click', function() {
+for(let i = 0; i < RATE_STARS.length; i++) {
+    RATE_STARS[i].addEventListener('click', function() {
         addStar(event, i);
     });
 }
@@ -306,12 +305,12 @@ function addStar(event, num) {
     // Подфункция перебирающая все звезды вокруг текущей и назначающая им штриховку или пустоту;
 
     function checkAllStars(num) {
-        for(let i = 0; i < rateStars.length; i++) {
+        for(let i = 0; i < RATE_STARS.length; i++) {
             if(i < num) {
-                setFullStar(rateStars[i]);
+                setFullStar(RATE_STARS[i]);
             }
             else if(i > num) {
-                setEmptyStar(rateStars[i]);
+                setEmptyStar(RATE_STARS[i]);
             }
         }
     }
@@ -325,7 +324,7 @@ addDefaultBlockToWeb(); // Парсит на страницу 2 дефолтны
 addNewFeedback(); // Парсит все что есть в localStorage;
 
 // Событие нажатия на кнопку отправки отзыва
-feedSendBtn.addEventListener('click', function() {
+FEED_SEND_BTN.addEventListener('click', function() {
     if(checkNecessaryInputs()) {   // Проверяет заполнены ли все обязательные поля;
         addDataToLocalStorage();  // Данные из полей формы добавляются в localStorage;
         addNewFeedback();         // Парсит все что есть в localStorage;
@@ -347,28 +346,28 @@ function checkNecessaryInputs() {
     let check;
     let red = '1px red solid';
     let black = '1px solid rgba(72, 73, 77, 0.2)';
-    let errorForName = feedName.previousElementSibling;
-    let errorForComment  = feedComment.previousElementSibling;
+    let errorForName = FEED_NAME.previousElementSibling;
+    let errorForComment  = FEED_COMMENT.previousElementSibling;
 
-    if(feedName.value == '' && feedComment.value == '') {
+    if(FEED_NAME.value == '' && FEED_COMMENT.value == '') {
         check = false;
-        getError(feedName, red, errorForName, 'visible');
-        getError(feedComment, red, errorForComment, 'visible');
+        getError(FEED_NAME, red, errorForName, 'visible');
+        getError(FEED_COMMENT, red, errorForComment, 'visible');
     }
-    else if(feedName.value == '') {
+    else if(FEED_NAME.value == '') {
         check = false;
-        getError(feedName, red, errorForName, 'visible');
-        getError(feedComment, black, errorForComment, 'hidden');
+        getError(FEED_NAME, red, errorForName, 'visible');
+        getError(FEED_COMMENT, black, errorForComment, 'hidden');
     }
-    else if(feedComment.value == '') {
+    else if(FEED_COMMENT.value == '') {
         check = false;
-        getError(feedComment, red, errorForComment, 'visible');
-        getError(feedName, black, errorForName, 'hidden');
+        getError(FEED_COMMENT, red, errorForComment, 'visible');
+        getError(FEED_NAME, black, errorForName, 'hidden');
     }
     else {
         check = true;
-        getError(feedName, black, errorForName, 'hidden');
-        getError(feedComment, black, errorForComment, 'hidden');
+        getError(FEED_NAME, black, errorForName, 'hidden');
+        getError(FEED_COMMENT, black, errorForComment, 'hidden');
     }
 
     // Подфункция назначающая цвет бордера для обязательного поля, 
@@ -385,19 +384,19 @@ function checkNecessaryInputs() {
 // Функция очистки формы и скрытия модального окна;
 
 function cleanFormAfterSend() {
-    feedName.value = '';
-    feedPlus.value = '';
-    feedMinus.value = '';
-    feedComment.value = '';
+    FEED_NAME.value = '';
+    FEED_PLUS.value = '';
+    FEED_MINUS.value = '';
+    FEED_COMMENT.value = '';
 
     // Подункция обнуления выбранных звезд в модальном окне написания отзывов
 
     function cleanStar() {
-        for(let i = 0; i < rateStars.length; i++) {
-            rateStars[i].setAttribute('src', './img/empty.png');
-            rateStars[i].previousElementSibling.setAttribute('srcset', './img/empty.webp');
-            rateStars[i].setAttribute('width', '28');
-            rateStars[i].setAttribute('height', '28');
+        for(let i = 0; i < RATE_STARS.length; i++) {
+            RATE_STARS[i].setAttribute('src', './img/empty.png');
+            RATE_STARS[i].previousElementSibling.setAttribute('srcset', './img/empty.webp');
+            RATE_STARS[i].setAttribute('width', '28');
+            RATE_STARS[i].setAttribute('height', '28');
         }
 }
     cleanStar();
@@ -410,10 +409,10 @@ function addDataToStorage() {
     let newFeedback = {};
 
     newFeedback.id = localStorage.length + 1;
-    newFeedback.name = feedName.value;
-    newFeedback.plus = feedPlus.value;
-    newFeedback.minus = feedMinus.value;
-    newFeedback.comment = feedComment.value;
+    newFeedback.name = FEED_NAME.value;
+    newFeedback.plus = FEED_PLUS.value;
+    newFeedback.minus = FEED_MINUS.value;
+    newFeedback.comment = FEED_COMMENT.value;
     newFeedback.rate = getRate();
 
     // Подфункция которая считает выбранный рейтинг и возвращает значение рейтинга для объекта-отзыва;
@@ -421,8 +420,8 @@ function addDataToStorage() {
     function getRate() {
         let result = 0;
 
-        for(let i = 0; i < rateStars.length; i++) {
-            result += Number(rateStars[i].getAttribute('data-rate'));
+        for(let i = 0; i < RATE_STARS.length; i++) {
+            result += Number(RATE_STARS[i].getAttribute('data-rate'));
         }
 
         return result;
@@ -442,35 +441,35 @@ function addDataToLocalStorage() {
 // Функция конструктор блока отзывов;
 
 function createFeedbackBlock(obj) {
-    let cloneBlock = feedbackPattern.cloneNode(true);
-    let feedName = cloneBlock.children[0];
-    let feedPlus = cloneBlock.children[1].children[2];
-    let feedMinus = cloneBlock.children[2].children[2];
-    let feedComment = cloneBlock.children[3].children[1];
+    let cloneBlock = FEEDBACK_PATTERN.cloneNode(true);
+    let FEED_NAME = cloneBlock.children[0];
+    let FEED_PLUS = cloneBlock.children[1].children[2];
+    let FEED_MINUS = cloneBlock.children[2].children[2];
+    let FEED_COMMENT = cloneBlock.children[3].children[1];
     let feedRateBlock = cloneBlock.children[4];
     let feedAnswerBtn = cloneBlock.children[5].children[1];
 
     cloneBlock.classList.remove('feedback__block-hidden');
     cloneBlock.setAttribute('data-id', obj.id);
-    feedName.innerHTML = obj.name;
-    feedPlus.innerHTML = obj.plus;
-    feedMinus.innerHTML = obj.minus;
-    feedComment.innerHTML = obj.comment;
+    FEED_NAME.innerHTML = obj.name;
+    FEED_PLUS.innerHTML = obj.plus;
+    FEED_MINUS.innerHTML = obj.minus;
+    FEED_COMMENT.innerHTML = obj.comment;
     feedRateBlock.append(generateRate(obj.rate));
     feedAnswerBtn.addEventListener('click', function() { // Вешает событие на кнопку "ответить" под отзывом;
         expandAnswerBlock(event);
     });
 
-    feedbackMainBlock.append(cloneBlock);
+    FEEDBACK_MAIN_BLOCK.append(cloneBlock);
 }
 
 // Функция проверяет есть ли отзыв на странице по data-id в блоке и id из localStorage.id;
 
 function checkId(obj) {
     let result = false;
-    for(let i = 3; i < feedbackMainBlock.children.length; i++) {
+    for(let i = 3; i < FEEDBACK_MAIN_BLOCK.children.length; i++) {
         if(obj.id != null) {
-            if(feedbackMainBlock.children[i].getAttribute('data-id') == obj.id) {
+            if(FEEDBACK_MAIN_BLOCK.children[i].getAttribute('data-id') == obj.id) {
                 result = true;
             }
         }
@@ -555,13 +554,7 @@ function generateRate(rate) {
 // Скрипт для кнопки ответить
 // =================================================================================================
 
-const mainAnswerBtn = document.querySelectorAll('.feedback__answer-link');
-const answerBlock = document.querySelectorAll('.feedback__answer');
-const closeAnswerBtn = document.querySelectorAll('.feedback__answer-close-btn');
-const sendAnswerBtn = document.querySelectorAll('.feedback__answer-btn');
-const modarateMessageWindow = document.querySelector('.feedback__modarate-message');
-
-
+const MODERATE_MESSAGE_WINDOW = document.querySelector('.feedback__modarate-message');
 
 // Функция раскрывающая блок для введения ответа на отзыв + вешает событие на кнопки 'закрыть' и 'отправить';
 
@@ -626,10 +619,10 @@ function checkAnswer(event) {
 // Функция выдает окно "Ответ на модерации";
 
 function getModerateMessage() {
-    modarateMessageWindow.style.display = 'flex';
+    MODERATE_MESSAGE_WINDOW.style.display = 'flex';
 
     setTimeout(function() {
-        modarateMessageWindow.style.display = 'none';
+        MODERATE_MESSAGE_WINDOW.style.display = 'none';
     }, 3000);
 }
  // Реализация добавления отзывов;

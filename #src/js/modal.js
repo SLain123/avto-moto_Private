@@ -1,18 +1,17 @@
-const feedbackOpenBtn = document.querySelector('.feedback__send-btn');
-const modalBackground = document.querySelector('.modal');
-const modalFeedbackWindow = document.querySelector('.feed-window');
-const feedbackSendBtn = document.querySelector('.feed-window__send-btn');
-const feedbackCloseBtn = document.querySelector('.feed-window__close-btn');
-const nameInput = document.querySelector('.feed-window__column-one input');
+const FEEDBACK_OPEN_BTN = document.querySelector('.feedback__send-btn');
+const MODAL_BACKGROUND = document.querySelector('.modal');
+const MODAL_FEEDBACK_WINDOW = document.querySelector('.feed-window');
+const FEEDBACK_CLOSE_BTN = document.querySelector('.feed-window__close-btn');
+const NAME_INPUT = document.querySelector('.feed-window__column-one input');
 
 // События нажатия кнопок;
 
-feedbackOpenBtn.addEventListener('click', displayModalWindow);
-feedbackCloseBtn.addEventListener('click', function() {
+FEEDBACK_OPEN_BTN.addEventListener('click', displayModalWindow);
+FEEDBACK_CLOSE_BTN.addEventListener('click', function() {
     hideModalWindow();
     cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
 });
-modalBackground.addEventListener('click', checkTarget);
+MODAL_BACKGROUND.addEventListener('click', checkTarget);
 document.addEventListener('keydown', function() {           // событие esc для закрытия модального окна;
     if(event.key == 'Escape') {
         hideModalWindow();
@@ -23,32 +22,32 @@ document.addEventListener('keydown', function() {           // событие es
 // Функция отображающая модальное окно с формой для отправки заявки;
 
 function displayModalWindow() {
-    modalBackground.style.display = 'flex';
-    modalBackground.style.animationName= 'visible';
-    modalBackground.style.animationPlayState = 'running';
+    MODAL_BACKGROUND.style.display = 'flex';
+    MODAL_BACKGROUND.style.animationName= 'visible';
+    MODAL_BACKGROUND.style.animationPlayState = 'running';
 
-    modalFeedbackWindow.style.display = 'flex';
-    modalFeedbackWindow.style.animationName= 'visible';
-    modalFeedbackWindow.style.animationPlayState = 'running';
+    MODAL_FEEDBACK_WINDOW.style.display = 'flex';
+    MODAL_FEEDBACK_WINDOW.style.animationName= 'visible';
+    MODAL_FEEDBACK_WINDOW.style.animationPlayState = 'running';
 
     document.querySelector('body').classList.add('no-scroll');
 
-    nameInput.focus();
+    NAME_INPUT.focus();
 }
 
 // Функция скрывающая модальное окно с формой для отправки заявки;
 
 function hideModalWindow() {
-    modalBackground.style.animationName= 'hidden';
+    MODAL_BACKGROUND.style.animationName= 'hidden';
 
     setTimeout(function() {
-        modalBackground.style.display= 'none';
+        MODAL_BACKGROUND.style.display= 'none';
     }, 475);
 
-    modalFeedbackWindow.style.animationName= 'hidden';
+    MODAL_FEEDBACK_WINDOW.style.animationName= 'hidden';
 
     setTimeout(function() {
-        modalFeedbackWindow.style.display= 'none';
+        MODAL_FEEDBACK_WINDOW.style.display= 'none';
     }, 475);
 
     document.querySelector('body').classList.remove('no-scroll');
@@ -57,7 +56,7 @@ function hideModalWindow() {
 // Функция проверки места клика, определяет был ли клик за блоком отзывов;
 
 function checkTarget(event) {
-    if(event.target != modalFeedbackWindow) {
+    if(event.target != MODAL_FEEDBACK_WINDOW) {
         hideModalWindow();
         cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
     }
