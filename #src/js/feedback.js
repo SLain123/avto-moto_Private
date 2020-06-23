@@ -240,10 +240,10 @@ function createFeedbackBlock(obj) {
 
     cloneBlock.classList.remove('feedback__block-hidden');
     cloneBlock.setAttribute('data-id', obj.id);
-    FEED_NAME.innerHTML = obj.name;
-    FEED_PLUS.innerHTML = obj.plus;
-    FEED_MINUS.innerHTML = obj.minus;
-    FEED_COMMENT.innerHTML = obj.comment;
+    FEED_NAME.textContent = obj.name;
+    FEED_PLUS.textContent = obj.plus;
+    FEED_MINUS.textContent = obj.minus;
+    FEED_COMMENT.textContent = obj.comment;
     feedRateBlock.append(generateRate(obj.rate));
     feedAnswerBtn.addEventListener('click', function() { // Вешает событие на кнопку "ответить" под отзывом;
         expandAnswerBlock(event);
