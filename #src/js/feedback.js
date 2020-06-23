@@ -414,3 +414,4 @@ function getModerateMessage() {
         MODERATE_MESSAGE_WINDOW.style.display = 'none';
     }, 3000);
 }
+

@@ -66,16 +66,16 @@ function findCurrentSlide() {
 
 function checkAvailabilityButtons(current) {
     if(current == 0) {
-        LEFT_BTN.setAttribute('disabled', '');
-        RIGHT_BTN.removeAttribute('disabled', '');
+        LEFT_BTN.disabled  = true;
+        RIGHT_BTN.disabled  = false;
     }
     else if(current == ALL_SLIDES.length - 1) {
-        LEFT_BTN.removeAttribute('disabled', '');
-        RIGHT_BTN.setAttribute('disabled', '');
+        LEFT_BTN.disabled  = false;
+        RIGHT_BTN.disabled  = true;
     }
     else {
-        LEFT_BTN.removeAttribute('disabled', '');
-        RIGHT_BTN.removeAttribute('disabled', '');
+        LEFT_BTN.disabled  = false;
+        RIGHT_BTN.disabled  = false;
     }
 }
 
