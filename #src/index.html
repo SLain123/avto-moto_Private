@@ -8,13 +8,16 @@
 </head>
 <body>
     <div class="wrapper">
-        @@include('./_navigation.html')
-        <div class="wrapper__content">
-            @@include('./_main-block.html')
-            @@include('./_description.html')
-        </div>
-        @@include('./_footer.html')
-        @@include('./_modal.html')
+        <h1 class="visually-hidden">h1</h1>
+        <h2 class="visually-hidden">h2</h2>
+        <h3 class="visually-hidden">h3</h3>
+            @@include('./_navigation.html')
+            <div class="wrapper__content">
+                @@include('./_main-block.html')
+                @@include('./_description.html')
+            </div>
+            @@include('./_footer.html')
+            @@include('./_modal.html')
     </div>
     <script defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTpcDUElRuZQd8uAczMS3NNmF7WQlgX7U&callback=initMap">

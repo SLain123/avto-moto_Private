@@ -1,4 +1,4 @@
-let project_folder = require('path').basename(__dirname + '_public');
+let project_folder = 'build';
 let source_folder = '#src';
 
 let path = {
