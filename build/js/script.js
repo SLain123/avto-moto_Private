@@ -174,15 +174,15 @@
     // События нажатия кнопок;
 
     FEEDBACK_OPEN_BTN.addEventListener('click', displayModalWindow);
-    FEEDBACK_CLOSE_BTN.addEventListener('click', function() {
-        hideModalWindow();
-        cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
+    FEEDBACK_CLOSE_BTN.addEventListener('click', function(evt) {
+        hideModalWindow(evt);
+        cleanFormAfterSend(evt); // Очистить поля формы и рейтинг после закрытия;
     });
     MODAL_BACKGROUND.addEventListener('click', checkTarget);
-    document.addEventListener('keydown', function() {           // событие esc для закрытия модального окна;
-        if(event.key == 'Escape') {
-            hideModalWindow()
-            cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
+    document.addEventListener('keydown', function(evt) {           // событие esc для закрытия модального окна;
+        if(evt.key == 'Escape') {
+            hideModalWindow(evt)
+            cleanFormAfterSend(evt); // Очистить поля формы и рейтинг после закрытия;
         }
     });
 
@@ -222,8 +222,8 @@
 
     // Функция проверки места клика, определяет был ли клик за блоком отзывов;
 
-    function checkTarget(event) {
-        if(event.target != MODAL_FEEDBACK_WINDOW) {
+    function checkTarget(evt) {
+        if(evt.target != MODAL_FEEDBACK_WINDOW) {
             hideModalWindow();
             cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
         }
@@ -241,10 +241,10 @@
 
         function cleanStar() {
             for(let i = 0; i < RATE_STARS.length; i++) {
-                RATE_STARS[i].setAttribute('src', './img/empty.png');
-                RATE_STARS[i].previousElementSibling.setAttribute('srcset', './img/empty.webp');
-                RATE_STARS[i].setAttribute('width', '28');
-                RATE_STARS[i].setAttribute('height', '28');
+                RATE_STARS[i].src ='./img/empty.png';
+                RATE_STARS[i].previousElementSibling.srcset= './img/empty.webp';
+                RATE_STARS[i].width = 28;
+                RATE_STARS[i].height = 28;
             }
     }
         cleanStar();
@@ -293,20 +293,21 @@
     // Событие нажатия на одну из звезд рейтинга;
 
     for(let i = 0; i < RATE_STARS.length; i++) {
-        RATE_STARS[i].addEventListener('click', function() {
-            addStar(event, i);
+        RATE_STARS[i].addEventListener('click', function(evt) {
+            addStar(evt, i);
         });
     }
 
     // Основная функция которая заштриховывает активные звезды в блоке рейтинга;
 
-    function addStar(event, num) {
-        let currentStar = event.target;
+    function addStar(evt, num) {
+        let currentStar = evt.target;
 
         checkAllStars(num); // проверка всех звезд кроме текущей;
 
         // Проверка значения текущей звезды;
-        if(currentStar.getAttribute('src') == './img/full.png') {
+
+        if(currentStar.dataset.rate == 1) {
             setHalfStar(currentStar);
         }
 
@@ -318,39 +319,39 @@
 
         function setFullStar(elem) {
             if(elem.previousSibling.nodeName == "SOURCE") {
-                elem.previousSibling.setAttribute('srcset', './img/full.webp');
+                elem.previousSibling.srcset = './img/full.webp';
             }
         
-            elem.setAttribute('src', './img/full.png');
-            elem.setAttribute('data-rate', '1');
-            elem.setAttribute('width', '28');
-            elem.setAttribute('height', '28');
+            elem.src = './img/full.png';
+            elem.dataset.rate = '1';
+            elem.width = 28;
+            elem.height = 28;
         }
 
         // Подфункция закрашивания половины звезды;
 
         function setHalfStar(elem) {
             if(elem.previousSibling.nodeName == "SOURCE") {
-                elem.previousSibling.setAttribute('srcset', './img/half.webp');
+                elem.previousSibling.srcset = './img/half.webp';
             }
         
-            elem.setAttribute('src', './img/half.png');
-            elem.setAttribute('data-rate', '0.5');
-            elem.setAttribute('width', '28');
-            elem.setAttribute('height', '28');
+            elem.src = './img/half.png';
+            elem.dataset.rate = '0.5';
+            elem.width = 28;
+            elem.height = 28;
         }
 
         // Подфункция очищающая застрихованную звезду;
 
         function setEmptyStar(elem) {
             if(elem.previousSibling.nodeName == "SOURCE") {
-                elem.previousSibling.setAttribute('srcset', './img/empty.webp');
+                elem.previousSibling.srcset = './img/empty.webp';
             }
         
-            elem.setAttribute('src', './img/empty.png');
-            elem.setAttribute('data-rate', '0');
-            elem.setAttribute('width', '28');
-            elem.setAttribute('height', '28');
+            elem.src = './img/empty.png';
+            elem.dataset.rate = '0';
+            elem.width = 28;
+            elem.height = 28;
         }
 
         // Подфункция перебирающая все звезды вокруг текущей и назначающая им штриховку или пустоту;
@@ -450,7 +451,7 @@
             let result = 0;
 
             for(let i = 0; i < RATE_STARS.length; i++) {
-                result += Number(RATE_STARS[i].getAttribute('data-rate'));
+                result += Number(RATE_STARS[i].dataset.rate);
             }
 
             return result;
@@ -481,22 +482,22 @@
         let closeBtn = cloneBlock.children[6].children[2];
 
         cloneBlock.classList.remove('feedback__block-hidden');
-        cloneBlock.setAttribute('data-id', obj.id);
+        cloneBlock.dataset.id = obj.id;
         FEED_NAME.textContent = obj.name;
         FEED_PLUS.textContent = obj.plus;
         FEED_MINUS.textContent = obj.minus;
         FEED_COMMENT.textContent = obj.comment;
         feedRateBlock.append(generateRate(obj.rate));
-        feedAnswerBtn.addEventListener('click', function() { // Вешает событие на кнопку "ответить" под отзывом;
-            expandAnswerBlock(event);
+        feedAnswerBtn.addEventListener('click', function(evt) { // Вешает событие на кнопку "ответить" под отзывом;
+            expandAnswerBlock(evt);
         });
 
-        closeBtn.addEventListener('click', function() { // Вешает событие на кнопку закрыть в блоке ответа;
-            hideAnswerBlock(event, 'close');
+        closeBtn.addEventListener('click', function(evt) { // Вешает событие на кнопку закрыть в блоке ответа;
+            hideAnswerBlock(evt, 'close');
             });
 
-        sendBtn.addEventListener('click', function() { // Вешает событие на кнопку отправить в блоке ответа;
-            checkAnswer(event);
+        sendBtn.addEventListener('click', function(evt) { // Вешает событие на кнопку отправить в блоке ответа;
+            checkAnswer(evt);
             });
 
         FEEDBACK_MAIN_BLOCK.append(cloneBlock);
@@ -508,7 +509,7 @@
         let result = false;
         for(let i = 3; i < FEEDBACK_MAIN_BLOCK.children.length; i++) {
             if(obj.id != null) {
-                if(FEEDBACK_MAIN_BLOCK.children[i].getAttribute('data-id') == obj.id) {
+                if(FEEDBACK_MAIN_BLOCK.children[i].dataset.id == obj.id) {
                     result = true;
                 }
             }
@@ -539,31 +540,31 @@
             let source = document.createElement('source');
             let img = document.createElement('img');
 
-            source.setAttribute('type', 'image/webp');
-            img.setAttribute('alt', 'star');
-            img.setAttribute('width', '28');
-            img.setAttribute('height', '28');
+            source.type = 'image/webp';
+            img.alt = 'star';
+            img.width = 28;
+            img.height = 28;
             img.classList.add('feedback__red-star');
 
             if(star >= 1) {
-                source.setAttribute('srcset', './img/full.webp');
-                img.setAttribute('src', './img/full.png');
-                img.setAttribute('width', '28');
-                img.setAttribute('height', '28');
+                source.srcset = './img/full.webp';
+                img.src = './img/full.png';
+                img.width = 28;
+                img.height = 28;
                 star -= 1;
             }
             else if(star == 0.5) {
-                source.setAttribute('srcset', './img/half.webp');
-                img.setAttribute('src', './img/half.png');
-                img.setAttribute('width', '28');
-                img.setAttribute('height', '28');
+                source.srcset ='./img/half.webp';
+                img.src = './img/half.png';
+                img.width = 28;
+                img.height = 28;
                 star -= 1;
             }
             else {
-                source.setAttribute('srcset', './img/empty.webp');
-                img.setAttribute('src', './img/empty.png');
-                img.setAttribute('width', '28');
-                img.setAttribute('height', '28');
+                source.srcset = './img/empty.webp';
+                img.src = './img/empty.png';
+                img.width = 28;
+                img.height = 28;
             }
         
             picture.append(source);
@@ -595,10 +596,10 @@
 
     // Функция раскрывающая блок для введения ответа на отзыв;
 
-    function expandAnswerBlock(event) {
-        let currentAnswerBlock = event.target.parentElement.nextElementSibling;
+    function expandAnswerBlock(evt) {
+        let currentAnswerBlock = evt.target.parentElement.nextElementSibling;
         let answerBtn = currentAnswerBlock.querySelector('.feedback__answer-btn');
-        let textArea = event.target.parentElement.nextElementSibling.children[0];
+        let textArea = evt.target.parentElement.nextElementSibling.children[0];
 
         currentAnswerBlock.style.animationName = 'expandAnswer';
         currentAnswerBlock.style.animationPlayState = 'running';
@@ -614,13 +615,13 @@
     // Функция скрывает блок для введения ответа на отзыв, принимает событие нажатия на объект и аргумент кем именно данный объект является
     // (Кнопка 'закрыть' или 'отправить')
 
-    function hideAnswerBlock(event, elem) {
+    function hideAnswerBlock(evt, elem) {
         let currentAnswerBlock;
         if(elem == 'close') {
-            currentAnswerBlock = event.target.parentElement.parentElement.parentElement;
+            currentAnswerBlock = evt.target.parentElement.parentElement.parentElement;
         }
         else {
-            currentAnswerBlock = event.target.parentElement;
+            currentAnswerBlock = evt.target.parentElement;
         }
 
          
@@ -637,9 +638,9 @@
 
     // Функция проверяет было ли заполнено поле ответа;
 
-    function checkAnswer(event) {
-        event.preventDefault();
-        let textArea = event.target.parentElement.children[0];
+    function checkAnswer(evt) {
+        evt.preventDefault();
+        let textArea = evt.target.parentElement.children[0];
         
 
         if(textArea.value == '') {
@@ -648,7 +649,7 @@
         else {
             textArea.style.border = '1px solid black';
             textArea.value = '';
-            hideAnswerBlock(event);
+            hideAnswerBlock(evt);
             getModerateMessage();
         }
     }
@@ -663,17 +664,13 @@
         }, 3000);
     }
     
-}() // Реализация добавления отзывов;
-(function map() {
-    
-    function initMap() {
-        // The location of Uluru
-        var uluru = {lat: 59.968368, lng: 30.317514};
-        // The map, centered at Uluru
-        var map = new google.maps.Map(
-            document.querySelector('.contact__map'), {zoom: 15, center: uluru});
-        // The marker, positioned at Uluru
-        var marker = new google.maps.Marker({position: uluru, map: map});
-    }
-
-}()); // Скрипт для отображения google maps;
+}()); // Реализация добавления отзывов;
+function initMap() {
+    // The location of Uluru
+    var uluru = {lat: 59.968368, lng: 30.317514};
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+        document.querySelector('.contact__map'), {zoom: 15, center: uluru});
+    // The marker, positioned at Uluru
+    var marker = new google.maps.Marker({position: uluru, map: map});
+} // Скрипт для отображения google maps;

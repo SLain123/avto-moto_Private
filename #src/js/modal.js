@@ -15,15 +15,15 @@
     // События нажатия кнопок;
 
     FEEDBACK_OPEN_BTN.addEventListener('click', displayModalWindow);
-    FEEDBACK_CLOSE_BTN.addEventListener('click', function() {
-        hideModalWindow();
-        cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
+    FEEDBACK_CLOSE_BTN.addEventListener('click', function(evt) {
+        hideModalWindow(evt);
+        cleanFormAfterSend(evt); // Очистить поля формы и рейтинг после закрытия;
     });
     MODAL_BACKGROUND.addEventListener('click', checkTarget);
-    document.addEventListener('keydown', function() {           // событие esc для закрытия модального окна;
-        if(event.key == 'Escape') {
-            hideModalWindow()
-            cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
+    document.addEventListener('keydown', function(evt) {           // событие esc для закрытия модального окна;
+        if(evt.key == 'Escape') {
+            hideModalWindow(evt)
+            cleanFormAfterSend(evt); // Очистить поля формы и рейтинг после закрытия;
         }
     });
 
@@ -63,8 +63,8 @@
 
     // Функция проверки места клика, определяет был ли клик за блоком отзывов;
 
-    function checkTarget(event) {
-        if(event.target != MODAL_FEEDBACK_WINDOW) {
+    function checkTarget(evt) {
+        if(evt.target != MODAL_FEEDBACK_WINDOW) {
             hideModalWindow();
             cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
         }
@@ -82,10 +82,10 @@
 
         function cleanStar() {
             for(let i = 0; i < RATE_STARS.length; i++) {
-                RATE_STARS[i].setAttribute('src', './img/empty.png');
-                RATE_STARS[i].previousElementSibling.setAttribute('srcset', './img/empty.webp');
-                RATE_STARS[i].setAttribute('width', '28');
-                RATE_STARS[i].setAttribute('height', '28');
+                RATE_STARS[i].src ='./img/empty.png';
+                RATE_STARS[i].previousElementSibling.srcset= './img/empty.webp';
+                RATE_STARS[i].width = 28;
+                RATE_STARS[i].height = 28;
             }
     }
         cleanStar();
