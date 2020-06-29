@@ -1,63 +1,101 @@
-const FEEDBACK_OPEN_BTN = document.querySelector('.feedback__send-btn');
-const MODAL_BACKGROUND = document.querySelector('.modal');
-const MODAL_FEEDBACK_WINDOW = document.querySelector('.feed-window');
-const FEEDBACK_CLOSE_BTN = document.querySelector('.feed-window__close-btn');
-const NAME_INPUT = document.querySelector('.feed-window__column-one input');
+(function modal() {
 
-// События нажатия кнопок;
+    const FEEDBACK_OPEN_BTN = document.querySelector('.feedback__send-btn');
+    const MODAL_BACKGROUND = document.querySelector('.modal');
+    const MODAL_FEEDBACK_WINDOW = document.querySelector('.feed-window');
+    const FEEDBACK_CLOSE_BTN = document.querySelector('.feed-window__close-btn');
+    const NAME_INPUT = document.querySelector('.feed-window__column-one input');
+    const ALL_INPUTS = document.querySelectorAll('.feed-window__column-one input');
+    const FEED_NAME = ALL_INPUTS[0];
+    const FEED_PLUS = ALL_INPUTS[1];
+    const FEED_MINUS = ALL_INPUTS[2];
+    const FEED_COMMENT = document.querySelector('.feed-window__column-two textarea');
+    const RATE_STARS = document.querySelectorAll('.feed-window__rate img');
 
-FEEDBACK_OPEN_BTN.addEventListener('click', displayModalWindow);
-FEEDBACK_CLOSE_BTN.addEventListener('click', function() {
-    hideModalWindow();
-    cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
-});
-MODAL_BACKGROUND.addEventListener('click', checkTarget);
-document.addEventListener('keydown', function() {           // событие esc для закрытия модального окна;
-    if(event.key == 'Escape') {
+    // События нажатия кнопок;
+
+    FEEDBACK_OPEN_BTN.addEventListener('click', displayModalWindow);
+    FEEDBACK_CLOSE_BTN.addEventListener('click', function() {
         hideModalWindow();
         cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
+    });
+    MODAL_BACKGROUND.addEventListener('click', checkTarget);
+    document.addEventListener('keydown', function() {           // событие esc для закрытия модального окна;
+        if(event.key == 'Escape') {
+            hideModalWindow()
+            cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
+        }
+    });
+
+    // Функция отображающая модальное окно с формой для отправки заявки;
+
+    function displayModalWindow() {
+        MODAL_BACKGROUND.style.display = 'flex';
+        MODAL_BACKGROUND.style.animationName= 'visible';
+        MODAL_BACKGROUND.style.animationPlayState = 'running';
+
+        MODAL_FEEDBACK_WINDOW.style.display = 'flex';
+        MODAL_FEEDBACK_WINDOW.style.animationName= 'visible';
+        MODAL_FEEDBACK_WINDOW.style.animationPlayState = 'running';
+
+        document.querySelector('body').classList.add('no-scroll');
+
+        NAME_INPUT.focus();
     }
-});
 
-// Функция отображающая модальное окно с формой для отправки заявки;
+    // Функция скрывающая модальное окно с формой для отправки заявки;
 
-function displayModalWindow() {
-    MODAL_BACKGROUND.style.display = 'flex';
-    MODAL_BACKGROUND.style.animationName= 'visible';
-    MODAL_BACKGROUND.style.animationPlayState = 'running';
+    function hideModalWindow() {
+        MODAL_BACKGROUND.style.animationName= 'hidden';
 
-    MODAL_FEEDBACK_WINDOW.style.display = 'flex';
-    MODAL_FEEDBACK_WINDOW.style.animationName= 'visible';
-    MODAL_FEEDBACK_WINDOW.style.animationPlayState = 'running';
+        setTimeout(function() {
+            MODAL_BACKGROUND.style.display= 'none';
+        }, 475);
 
-    document.querySelector('body').classList.add('no-scroll');
+        MODAL_FEEDBACK_WINDOW.style.animationName= 'hidden';
 
-    NAME_INPUT.focus();
-}
+        setTimeout(function() {
+            MODAL_FEEDBACK_WINDOW.style.display= 'none';
+        }, 475);
 
-// Функция скрывающая модальное окно с формой для отправки заявки;
+        document.querySelector('body').classList.remove('no-scroll');
+    }
 
-function hideModalWindow() {
-    MODAL_BACKGROUND.style.animationName= 'hidden';
+    // Функция проверки места клика, определяет был ли клик за блоком отзывов;
 
-    setTimeout(function() {
-        MODAL_BACKGROUND.style.display= 'none';
-    }, 475);
+    function checkTarget(event) {
+        if(event.target != MODAL_FEEDBACK_WINDOW) {
+            hideModalWindow();
+            cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
+        }
+    }
 
-    MODAL_FEEDBACK_WINDOW.style.animationName= 'hidden';
+    // Функция очистки формы и скрытия модального окна;
 
-    setTimeout(function() {
-        MODAL_FEEDBACK_WINDOW.style.display= 'none';
-    }, 475);
+    function cleanFormAfterSend() {
+        FEED_NAME.value = '';
+        FEED_PLUS.value = '';
+        FEED_MINUS.value = '';
+        FEED_COMMENT.value = '';
 
-    document.querySelector('body').classList.remove('no-scroll');
-}
+        // Подункция обнуления выбранных звезд в модальном окне написания отзывов
 
-// Функция проверки места клика, определяет был ли клик за блоком отзывов;
-
-function checkTarget(event) {
-    if(event.target != MODAL_FEEDBACK_WINDOW) {
+        function cleanStar() {
+            for(let i = 0; i < RATE_STARS.length; i++) {
+                RATE_STARS[i].setAttribute('src', './img/empty.png');
+                RATE_STARS[i].previousElementSibling.setAttribute('srcset', './img/empty.webp');
+                RATE_STARS[i].setAttribute('width', '28');
+                RATE_STARS[i].setAttribute('height', '28');
+            }
+    }
+        cleanStar();
         hideModalWindow();
-        cleanFormAfterSend(); // Очистить поля формы и рейтинг после закрытия;
     }
-}
+
+    // Экспорт функции из модуля;
+
+    window.modal = {
+        cleanFormAfterSendFunc: cleanFormAfterSend
+    };
+
+}());
