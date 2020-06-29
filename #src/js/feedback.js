@@ -1,5 +1,16 @@
 // localStorage.clear(); // для очистки localStorage надо раскоментировать;
 
+const ALL_INPUTS = document.querySelectorAll('.feed-window__column-one input');
+const FEED_NAME = ALL_INPUTS[0];
+const FEED_PLUS = ALL_INPUTS[1];
+const FEED_MINUS = ALL_INPUTS[2];
+const FEED_COMMENT = document.querySelector('.feed-window__column-two textarea');
+const RATE_STARS = document.querySelectorAll('.feed-window__rate img');
+const FEED_SEND_BTN = document.querySelector('.feed-window__send-btn');
+const FEEDBACK_MAIN_BLOCK = document.querySelector('.feedback');
+const FEEDBACK_PATTERN = document.querySelector('.feedback__block');
+const MODERATE_MESSAGE_WINDOW = document.querySelector('.feedback__modarate-message');
+
 let localArr = [{
     id: -1,
     name: 'Борис Иванов',
@@ -16,16 +27,6 @@ let localArr = [{
     comment: 'Дизайн отличный, управление просто шикарно, ощущения за рулём такой машины особые. Но ремонт очень дорогой. Пару месяцев назад пришлось менять двигатель. По стоимости вышло как новый автомобиль. Так что, если покупать эту машину, надо быть готовым к большим расходам на обслуживание.',
     rate: 4.5
 }];
-
-const ALL_INPUTS = document.querySelectorAll('.feed-window__column-one input');
-const FEED_NAME = ALL_INPUTS[0];
-const FEED_PLUS = ALL_INPUTS[1];
-const FEED_MINUS = ALL_INPUTS[2];
-const FEED_COMMENT = document.querySelector('.feed-window__column-two textarea');
-const RATE_STARS = document.querySelectorAll('.feed-window__rate img');
-const FEED_SEND_BTN = document.querySelector('.feed-window__send-btn');
-const FEEDBACK_MAIN_BLOCK = document.querySelector('.feedback');
-const FEEDBACK_PATTERN = document.querySelector('.feedback__block');
 
 
 // Событие нажатия на одну из звезд рейтинга;
@@ -342,8 +343,6 @@ function generateRate(rate) {
 // =================================================================================================
 // Скрипт для кнопки ответить
 // =================================================================================================
-
-const MODERATE_MESSAGE_WINDOW = document.querySelector('.feedback__modarate-message');
 
 // Функция раскрывающая блок для введения ответа на отзыв + вешает событие на кнопки 'закрыть' и 'отправить';
 
