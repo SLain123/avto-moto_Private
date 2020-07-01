@@ -13,6 +13,14 @@
         justify-content: space-between;
         align-items: center;
         height: 84px;
+
+        @media @w1650 {
+            max-width: 80%;
+        }
+
+        @media @w1350 {
+            max-width: 94.5%;
+        }
     }
 }
 .logo {
@@ -22,6 +30,10 @@
     &__pic {
         max-height: 55px;
         margin-left: 22px;
+
+        @media @w1124 {
+            margin-left: 0;
+        }
     }
 }
 .nav {
@@ -33,6 +45,19 @@
         justify-content: space-between;
         flex-wrap: nowrap;
         width: 43.5%;
+
+        @media @w1350 {
+            width: 45%;
+            margin-right: 30px;
+        }
+
+        @media @w1023 {
+            width: 55%;
+        }
+
+        @media @w768 {
+            display: none;
+        }
     }
 
     // .nav__link

@@ -1,0 +1,43 @@
+// main: ../style.less
+
+.burger {
+    position: relative;
+    width: 29px;
+    height: 22px;
+    cursor: pointer;
+    display: none;
+    margin-bottom: 10px;
+
+    @media @w768 {
+        display: block;
+    }
+
+    // .burger__dash
+
+    &__dash {
+        width: 29px;
+        height: 2px;
+        background-color: #48494D;
+        display: block;
+
+        &::before {
+            content: '';
+            width: 29px;
+            height: 2px;
+            background-color: #48494D;
+            display: block;
+            position: absolute;
+            top: 9px;        
+        }
+
+        &::after {
+            content: '';
+            width: 29px;
+            height: 2px;
+            background-color: #48494D;
+            display: block;
+            position: absolute;
+            top: 18px;        
+        }
+    }
+}

@@ -10,6 +10,15 @@
         margin-top: 26px;
         justify-content: space-between;
         display: flex;
+
+        @media @w1023 {
+            justify-content: space-evenly;
+        }
+
+        @media @w768 {
+            margin-top: -10px;
+            justify-content: start;
+        }
     }
 
     // .contact__addr
@@ -17,6 +26,10 @@
     &__addr {
         width: 302px;
         margin-right: 100px;
+
+        @media @w768 {
+            margin-right: 10px;
+        }
     }
 
     // .contact__title
@@ -57,5 +70,10 @@
 
     &__map {
         width: 510px;
+
+        @media @w1023 {
+            width: 283px;
+            height: 283px;
+        }
     }
 }

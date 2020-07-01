@@ -2,9 +2,38 @@
 
 .main {
     width: 61%;
+
+    @media @w1650 {
+        width: 75%;
+    }
+
+    @media @w1350 {
+        width: 90%;
+    }
+
+    @media @w1124 {
+        width: 98.5%;
+    }
     
     &__wrapper {
         margin: 86px auto;
         display: flex;
+
+        @media @w1650 {
+            justify-content: space-between;
+        }
+
+        @media @w1023 {
+            flex-flow: column;
+            align-items: center;
+            margin: 12px auto;
+        }
+
+        @media @w768 {
+            align-items: start;
+            margin-left: 20px;
+            margin-right: 0;
+            width: 97%;
+        }
     }
 }

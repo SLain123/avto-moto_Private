@@ -3,7 +3,11 @@
 .footer {
 	background: #F5F5F9;
     width: 100%;
-    height: 84px;
+	height: 84px;
+
+	@media @w1023 {
+		height: 166px;
+	}
 	// .footer_position
 
 	&__position {
@@ -12,16 +16,31 @@
 		bottom: 0;
 		width: 100%;
 		height: 80px;
+
+		@media @w768 {
+			height: 166px;
+			position: relative;
+			margin-top: -52px;
+		}
 	}
 
 	&__body {
 		margin: 0 auto;
-        max-width: 62.1%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        max-width: 62%;
 		height: 84px;
-		flex-wrap: nowrap;
+
+		@media @w1650 {
+            max-width: 80%;
+		}
+		
+		@media @w1350 {
+            max-width: 99%;
+		}
+
+		@media @w1023 {
+			height: 166px;
+			box-sizing: border-box;
+		}
 	}
 }
 
@@ -31,8 +50,64 @@
 
 	&__wrapper {
 		display: flex;
-		justify-content: space-between;
 		width: 100%;
+		margin: 0 0 15px 30px;
+		height: 84px;
+		align-items: center;
+		justify-content: center;
+
+		@media @w1350 {
+            margin: 0 0 15px 0;
+		}
+
+		@media @w1023 {
+			flex-flow: column;
+		}
+
+		@media @w1023 {
+			height: 166px;
+			padding: 10px;
+			box-sizing: border-box;
+		}
+	}
+
+	// .nav-footer__group
+
+	&__group {
+		display: flex;
+		margin-right: 66px;
+
+		@media @w1350 {
+            margin-right: 46px;
+		}
+
+		@media @w1124 {
+            margin-right: 26px;
+		}
+		
+		@media @w1023 {
+			width: 92%;
+			margin: 20px 0 0 70px;
+		}
+
+		@media @w768 {
+			width: 99%;
+			margin-left: 0;
+			margin-top: 10px;
+		}
+
+		&:last-child {
+			margin-right: 40px;
+
+			@media @w1350 {
+				margin-right: 0;
+			}
+
+			@media @w768 {
+				margin-left: ;
+				width: 82.5%;
+			}
+		}
 	}
 
 	// .nav-footer__link
@@ -40,13 +115,45 @@
 	&__link {
 		text-decoration: none;
         color: #48494D;
-        line-height: 22px;
         font-weight: 600;
 		white-space: nowrap;
-		margin: 0 0 21px 16px;
+		margin-right: 66px;
+		margin-bottom: 10px;
+
+		@media @w1350 {
+            margin-right: 46px;
+		}
+
+		@media @w1124 {
+            margin-right: 26px;
+		}
+		
+		@media @w1023 {
+			width: 33%;
+			margin-right: 26px;
+		}
+
+		@media @w768 {
+			margin-right: 100px;
+		}
+
+		&:last-child {
+			margin-right: 0px;
+
+			@media @w1023 {
+				width: 15%;
+			}
+
+			@media @w768 {
+				margin-left: -60px;
+				margin-right: 30px;
+			}
+		}
+
 		
 		&:hover {
-            color: black;
-        }
+			color: black;
+		}
+		
 	}
 }

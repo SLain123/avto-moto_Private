@@ -9,6 +9,15 @@
 
     &__block {
         margin-bottom: 32px;
+
+        @media @w1124 {
+            width: 96%;
+         }
+
+        @media @w768 {
+            width: 95%;
+            margin-bottom: 0;
+        }
     }
 
     // .feedback__block-hidden
@@ -67,6 +76,22 @@
         line-height: 19px;
         cursor: pointer;
 
+        @media @w1124 {
+           right: 20px;
+        }
+
+        @media @w1023 {
+            position: relative;
+            margin-left: 30px;
+            margin-top: 20px;
+        }
+
+        @media @w768 {
+            position: relative;
+            margin-left: 20px;
+            margin-top: -10px;
+        }
+
         &:hover {
             background: #D12136;
             color: white;
@@ -81,6 +106,21 @@
         line-height: 27px;
         color: #48494D;
         margin-bottom: 14px;
+
+        @media @w768 {
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+    }
+
+    // .feedback__head 
+
+    // .feedback_hide-to-tablets
+
+    &_hide-to-tablets {
+        @media @w768 {
+            display: none;
+        }
     }
 
     // .feedback__advice
