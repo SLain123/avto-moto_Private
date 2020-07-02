@@ -4,6 +4,10 @@
     width: 780px;
     display: none;
 
+    @media @w768 {
+        width: 700px;
+    }
+
     // .contact__body
 
     &__body {
@@ -19,6 +23,10 @@
             margin-top: -10px;
             justify-content: start;
         }
+
+        @media @w500 {
+            flex-flow: column;
+        }
     }
 
     // .contact__addr
@@ -29,6 +37,15 @@
 
         @media @w768 {
             margin-right: 10px;
+        }
+
+        @media @w760 {
+            width: 180px;
+            margin-right: 2px;
+        }
+
+        @media @w500 {
+            width: 100%;
         }
     }
 
@@ -50,8 +67,16 @@
         line-height: 19px;
         margin-bottom: 20px;
 
+        @media @w500 {
+            margin-bottom: 12px;
+        }
+
         &-null {
             margin: 0;
+
+            @media @w500 {
+                margin-bottom: 0;
+            }
         }
 
         &:last-child {
@@ -76,4 +101,13 @@
             height: 283px;
         }
     }
+
+    // .contact__hide-mobile
+
+    &_hide-mobile {
+        @media @w500 {
+            display: none;
+        }
+    }
+    
 }

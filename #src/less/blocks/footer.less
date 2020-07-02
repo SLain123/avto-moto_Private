@@ -8,6 +8,10 @@
 	@media @w1023 {
 		height: 166px;
 	}
+
+	@media @w500 {
+		height: 299px;
+	}
 	// .footer_position
 
 	&__position {
@@ -21,6 +25,10 @@
 			height: 166px;
 			position: relative;
 			margin-top: -52px;
+		}
+
+		@media @w500 {
+			height: 299px;
 		}
 	}
 
@@ -40,6 +48,10 @@
 		@media @w1023 {
 			height: 166px;
 			box-sizing: border-box;
+		}
+
+		@media @w500 {
+			height: 299px;
 		}
 	}
 }
@@ -69,6 +81,10 @@
 			padding: 10px;
 			box-sizing: border-box;
 		}
+
+		@media @w500 {
+			height: 299px;
+		}
 	}
 
 	// .nav-footer__group
@@ -96,6 +112,22 @@
 			margin-top: 10px;
 		}
 
+		@media @w760 {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		@media @w760 {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		@media @w500 {
+			flex-flow: column;
+			justify-content: center;
+			margin-top: 0;
+		}
+
 		&:last-child {
 			margin-right: 40px;
 
@@ -104,8 +136,11 @@
 			}
 
 			@media @w768 {
-				margin-left: ;
 				width: 82.5%;
+			}
+
+			@media @w760 {
+				width: 99%;
 			}
 		}
 	}
@@ -137,6 +172,18 @@
 			margin-right: 100px;
 		}
 
+		@media @w760 {
+			margin: 0;
+			white-space: initial;
+		}
+
+		@media @w500 {
+			white-space: nowrap;
+			margin-top: 15px;
+			text-align: center;
+			width: 100%;
+		}
+
 		&:last-child {
 			margin-right: 0px;
 
@@ -147,6 +194,18 @@
 			@media @w768 {
 				margin-left: -60px;
 				margin-right: 30px;
+			}
+
+			@media @w760 {
+				margin: 0;
+				margin-right: 20px;
+			}
+
+			@media @w500 {
+				white-space: nowrap;
+				margin-top: 15px;
+				text-align: center;
+				width: 100%;
 			}
 		}
 

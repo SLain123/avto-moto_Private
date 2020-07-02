@@ -32,6 +32,14 @@
         @media @w768 {
             margin: 30px 0 140px 18px;
         }
+
+        @media @w760 {
+            margin-left: 10px;
+        }
+
+        @media @w500 {
+            margin-bottom: 90px;
+        }
     }
 
     // .product-description__control-block
@@ -43,6 +51,16 @@
 
         @media @w768 {
             margin-bottom: 37px;
+        }
+
+        @media @w760 {
+            width: 100%;
+            min-width: 0;
+        }
+
+        @media @w500 {
+            min-width: 592px;
+            margin-bottom: 23px;
         }
     }
 
@@ -65,6 +83,21 @@
 
         &:last-child {
             float: none;
+        }
+
+        @media @w760 {
+            width: 30%;
+        }
+
+        &:first-child {
+           @media @w760 {
+                width: 40%;
+           }
+
+           @media @w500 {
+            width: 33%;
+        }
+           
         }
     }
 
