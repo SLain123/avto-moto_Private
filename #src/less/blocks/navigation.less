@@ -56,7 +56,18 @@
         }
 
         @media @w768 {
-            display: none;
+            display: flex;
+            position: absolute;
+            top: 54px; right: 0;
+            flex-flow: column;
+            width: 180px;
+            height: 200px;
+            margin: 0;
+            z-index: 1;
+            background: #F5F5F9;
+            justify-content: space-evenly;
+            align-items: center;
+
         }
     }
 
@@ -72,6 +83,10 @@
 
         &:hover {
             color: black;
+        }
+
+        @media @w768 {
+            display: block;
         }
     }
 }

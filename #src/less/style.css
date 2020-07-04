@@ -70,7 +70,18 @@ body {
 }
 @media (max-width: 768px) {
   .nav__wrapper {
-    display: none;
+    display: flex;
+    position: absolute;
+    top: 54px;
+    right: 0;
+    flex-flow: column;
+    width: 180px;
+    height: 200px;
+    margin: 0;
+    z-index: 1;
+    background: #F5F5F9;
+    justify-content: space-evenly;
+    align-items: center;
   }
 }
 .nav__link {
@@ -83,6 +94,11 @@ body {
 }
 .nav__link:hover {
   color: black;
+}
+@media (max-width: 768px) {
+  .nav__link {
+    display: block;
+  }
 }
 .main {
   width: 61%;
@@ -1385,6 +1401,7 @@ body {
   cursor: pointer;
   display: none;
   margin-bottom: 10px;
+  -webkit-tap-highlight-color: transparent;
 }
 @media (max-width: 768px) {
   .burger {
@@ -1414,6 +1431,12 @@ body {
   display: block;
   position: absolute;
   top: 18px;
+}
+.burger__close-btn {
+  font-size: 42px;
+  position: absolute;
+  top: -20px;
+  right: 0;
 }
 @font-face {
   font-family: "open sans";

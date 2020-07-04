@@ -7,6 +7,8 @@
     cursor: pointer;
     display: none;
     margin-bottom: 10px;
+    -webkit-tap-highlight-color: transparent;
+    
 
     @media @w768 {
         display: block;
@@ -19,6 +21,7 @@
         height: 2px;
         background-color: #48494D;
         display: block;
+
 
         &::before {
             content: '';
@@ -39,5 +42,13 @@
             position: absolute;
             top: 18px;        
         }
+    }
+
+    // .burger__close-btn
+
+    &__close-btn {
+        font-size: 42px;
+        position: absolute;
+        top: -20px; right: 0;
     }
 }

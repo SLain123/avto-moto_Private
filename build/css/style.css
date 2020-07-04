@@ -1035,6 +1035,7 @@ body {
   cursor: pointer;
   display: none;
   margin-bottom: 10px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .burger__dash {
@@ -1062,6 +1063,13 @@ body {
   display: block;
   position: absolute;
   top: 18px;
+}
+
+.burger__close-btn {
+  font-size: 42px;
+  position: absolute;
+  top: -20px;
+  right: 0;
 }
 
 @font-face {
@@ -1330,7 +1338,31 @@ body {
 
 @media (max-width: 768px) {
   .nav__wrapper {
-    display: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: absolute;
+    top: 54px;
+    right: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+    width: 180px;
+    height: 200px;
+    margin: 0;
+    z-index: 1;
+    background: #F5F5F9;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+
+  .nav__link {
+    display: block;
   }
 
   .main__wrapper {

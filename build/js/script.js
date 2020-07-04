@@ -674,44 +674,120 @@ function initMap() {
     // The marker, positioned at Uluru
     var marker = new google.maps.Marker({position: uluru, map: map});
 } // Скрипт для отображения google maps;
-const BTN_BLOCK = document.querySelector('.product-description__control-block');
-const BTNS = BTN_BLOCK.children;
-const MAIN_WIDTH = document.documentElement.clientWidth;
+(function swipe() { 
+    const BTN_BLOCK = document.querySelector('.product-description__control-block');
+    const BTNS = BTN_BLOCK.children;
+    const MAIN_WIDTH = document.documentElement.clientWidth;
 
-BTN_BLOCK.addEventListener('touchstart', handleTouchStart, false);  
-BTN_BLOCK.addEventListener('touchmove', handleTouchMove, false);
+    BTN_BLOCK.addEventListener('touchstart', handleTouchStart, false);  
+    BTN_BLOCK.addEventListener('touchmove', handleTouchMove, false);
 
-let xDown = null;                                                           
+    let xDown = null;                                                           
 
-function handleTouchStart(evt) {                                         
-    xDown = evt.touches[0].clientX;                                      
-};                                                
+    function handleTouchStart(evt) {                                         
+        xDown = evt.touches[0].clientX;                                      
+    };                                                
 
-function handleTouchMove(evt) {
-    if ( ! xDown) {
-        return;
-    }
-    else if(MAIN_WIDTH > 500) {
-        return;
-    }
+    function handleTouchMove(evt) {
+        if ( ! xDown) {
+            return;
+        }
+        else if(MAIN_WIDTH > 500) {
+            return;
+        }
 
-    let xUp = evt.touches[0].clientX;                                    
+        let xUp = evt.touches[0].clientX;                                    
 
-    let xDiff = xDown - xUp;
-    
-        if ( xDiff > 0 ) {
-            for(let btn of BTNS) {
-                if(MAIN_WIDTH < 400) {
-                    btn.style.transform = 'translateX(-270px)';
+        let xDiff = xDown - xUp;
+        
+            if ( xDiff > 0 ) {
+                for(let btn of BTNS) {
+                    if(MAIN_WIDTH < 400) {
+                        btn.style.transform = 'translateX(-270px)';
+                    }
+                    else btn.style.transform = 'translateX(-200px)';
+                    
                 }
-                else btn.style.transform = 'translateX(-200px)';
-                
+            } else {
+                for(let btn of BTNS) {
+                    btn.style.transform = 'translateX(0)';
+                }
+            }                       
+        xDown = null;                                          
+    };
+}()); // Cкрипт свайпа для кнопочного меню в мобильной версии;
+(function burger() {
+
+    const BURGER_BTN = document.querySelector('.burger');
+    const MENU_BLOCK = document.querySelector('.nav');
+    const MENU_ITEMS = MENU_BLOCK.children;
+    const MAIN_WIDTH = document.documentElement.clientWidth;
+
+    BURGER_BTN.addEventListener('click', displayMenu);
+
+// Устанавливает стартовые значения для меню, тем самым скрывая его на всех устройствах где есть поддержка js, в ином случае меню видно всегда;
+
+    function setDefaultConf() {
+        if(MAIN_WIDTH < 769) {
+            MENU_BLOCK.style.height = '0';
+            
+            setTimeout(function() {
+                MENU_BLOCK.style.transition = 'linear 1s';
+            }, 500);
+
+            for(let link of MENU_ITEMS) {
+                link.style.display = 'none';
             }
-        } else {
-            for(let btn of BTNS) {
-                btn.style.transform = 'translateX(0)';
+        }
+    }
+
+// Функция отображения меню-гамбургера;
+
+    function displayMenu() {
+        let dash = BURGER_BTN.children[0];
+
+        MENU_BLOCK.style.height = '200px';
+        
+        setTimeout(function() {
+            for(let link of MENU_ITEMS) {
+                link.style.display = 'inline';
             }
-        }                       
-    xDown = null;                                          
-};
- // Cкрипт свайпа для кнопочного меню в мобильной версии;
+        }, 500);
+
+        dash.classList.replace('burger__dash', 'burger__close-btn');
+        dash.innerHTML = '&times;';
+        
+
+        BURGER_BTN.removeEventListener('click', displayMenu);
+        BURGER_BTN.addEventListener('click', hideMenu);
+    }
+
+// Функция скрытия меню-гамбургера;
+
+    function hideMenu() {
+        let dash = BURGER_BTN.children[0];
+
+        MENU_BLOCK.style.height = '0';
+        
+        setTimeout(function() {
+            for(let link of MENU_ITEMS) {
+                link.style.display = 'none';
+            }
+        }, 500);
+
+        dash.classList.replace('burger__close-btn', 'burger__dash');
+        dash.innerHTML = '';
+
+        BURGER_BTN.removeEventListener('click', hideMenu);
+        BURGER_BTN.addEventListener('click', displayMenu);
+    }
+
+    setDefaultConf();
+
+// Функция обновления страницы при изменении ее размеров;
+
+    window.addEventListener('resize',function(){
+        window.location.reload();
+    });
+    
+}()); // Скрипт меню гамбургера для планшетной и мобильной версии;
