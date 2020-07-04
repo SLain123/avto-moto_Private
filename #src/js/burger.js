@@ -68,8 +68,8 @@
 
 // Функция обновления страницы при изменении ее размеров;
 
-    window.addEventListener('resize',function(){
-        window.location.reload();
-    });
+    // window.addEventListener('resize',function(){
+    //     window.location.reload();
+    // });
     
 }());

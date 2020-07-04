@@ -1,5 +1,5 @@
 (function feedback() {
-    // localStorage.clear(); // для очистки localStorage надо раскоментировать;
+    localStorage.clear(); // для очистки localStorage надо раскоментировать;
 
     const ALL_INPUTS = document.querySelectorAll('.feed-window__column-one input');
     const FEED_NAME = ALL_INPUTS[0];
