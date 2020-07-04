@@ -259,7 +259,7 @@
 
 }()); // Подключение модального окна с формой отзывов;
 (function feedback() {
-    localStorage.clear(); // для очистки localStorage надо раскоментировать;
+    // localStorage.clear(); // для очистки localStorage надо раскоментировать;
 
     const ALL_INPUTS = document.querySelectorAll('.feed-window__column-one input');
     const FEED_NAME = ALL_INPUTS[0];
@@ -783,11 +783,11 @@ function initMap() {
     }
 
     setDefaultConf();
-
-// Функция обновления страницы при изменении ее размеров;
-
-    // window.addEventListener('resize',function(){
-    //     window.location.reload();
-    // });
-    
 }()); // Скрипт меню гамбургера для планшетной и мобильной версии;
+(function refresh() {
+
+    window.addEventListener('resize',function(){
+        window.location.reload();
+    });
+    
+}()); // Скрипт обновления страницы при изменении ее размеров;
