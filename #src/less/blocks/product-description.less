@@ -59,8 +59,12 @@
         }
 
         @media @w500 {
-            min-width: 592px;
             margin-bottom: 23px;
+            width: 100%;
+            overflow-x: hidden;
+            display: flex;
+            flex-flow: row nowrap;
+
         }
     }
 
@@ -89,13 +93,19 @@
             width: 30%;
         }
 
+        @media @w500 {
+            min-width: 195px;
+            transition: .5s ease;
+        }
+
         &:first-child {
            @media @w760 {
                 width: 40%;
            }
 
            @media @w500 {
-            width: 33%;
+            min-width: 195px;
+            transition: .5s ease;
         }
            
         }
