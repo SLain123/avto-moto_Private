@@ -11,7 +11,6 @@
     padding: 35px;
     padding-top: 15px;
     background-color: #F5F5F9;
-    display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: space-evenly;
@@ -43,16 +42,28 @@
         left: 12%; top: 15%;
         width: 70%;
         min-width: 400px;
-        min-height: 638px;
+        overflow: auto;
+        height: 638px;
     }
 
     @media @w500 {
+        top: 0;
         left: 0;
         width: 100%;
         min-width: 320px;
-        min-height: 638px;
     }
 
+    @media @h560 {
+        top: 0;
+        overflow-y: auto;
+        justify-content: center;
+        height: 100vh;
+        padding: 0;
+    }
+
+    @media @h370 {
+        justify-content: start;
+    }
 
     // .feed-window__title
 
@@ -63,8 +74,13 @@
         color: #48494D;
 
         @media @w500 {
-            margin-top: 20px;
+            margin-top: 1vh;
             margin-bottom: 0;
+        }
+
+        @media @h560 {
+            margin-top: 5px;
+            margin-bottom: 14px;
         }
     }
 
@@ -75,6 +91,14 @@
 
         @media @w760 {
             flex-flow: column;
+        }
+
+        @media @w500 {
+            margin-top: -7vh;
+        }
+
+        @media @h560 {
+            margin-bottom: 7px;
         }
     }
 
@@ -106,7 +130,13 @@
             margin-bottom: 16px;
             background: #FFFFFF;
             border: 1px solid rgba(72, 73, 77, 0.2);
+
+            @media @h560 {
+                margin-bottom: 3px;
+                height: 40px;
+               }
         }
+
     }
 
     // .feed-window__column-two
@@ -125,13 +155,22 @@
             resize: none;
 
             @media @w500 {
-                margin-bottom: 30px;
+                margin-bottom: 2vh;
             }
+
+            @media @h560 {
+                margin-bottom: 0;
+                height: 60px;
+               }
         }
 
         @media @w500 {
-            margin-top: -15px;
+            margin-top: -2vh;
         }
+
+        @media @h560 {
+            margin-top: 0;
+           }
     }
 
     // .feed-window__error
@@ -180,7 +219,12 @@
 
         @media @w500 {
             margin-top: 0;
+            margin-bottom: 0;
         }
+
+        @media @h560 {
+            display: none;
+           }
     }
 
     // .feed-window__text
@@ -216,6 +260,12 @@
 
         &:hover {
             background: #BD0C21;
+        }
+
+        @media @h560 {
+            margin-top: 0;
+            height: 35px;
+            padding: 0 20px;
         }
     }
 

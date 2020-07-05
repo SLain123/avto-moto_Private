@@ -739,12 +739,11 @@ body {
 .modal {
   width: 100%;
   height: 100vh;
-  background-color: #E5E5E5;
+  background-color: rgba(229, 229, 229, 0.8);
   z-index: 10;
   position: fixed;
   top: 0;
   left: 0;
-  opacity: 0.8;
   -webkit-transition: all 6s ease;
   -o-transition: all 6s ease;
   transition: all 6s ease;
@@ -759,6 +758,7 @@ body {
           animation-timing-function: linear;
   -webkit-animation-play-state: paused;
           animation-play-state: paused;
+  overflow: auto;
 }
 
 @-webkit-keyframes visible {
@@ -858,9 +858,6 @@ body {
   padding: 35px;
   padding-top: 15px;
   background-color: #F5F5F9;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
@@ -1584,7 +1581,8 @@ body {
     top: 15%;
     width: 70%;
     min-width: 400px;
-    min-height: 638px;
+    overflow: auto;
+    height: 638px;
   }
 
   .feed-window__form {
@@ -1795,27 +1793,32 @@ body {
   }
 
   .feed-window {
+    top: 0;
     left: 0;
     width: 100%;
     min-width: 320px;
-    min-height: 638px;
   }
 
   .feed-window__title {
-    margin-top: 20px;
+    margin-top: 1vh;
     margin-bottom: 0;
   }
 
+  .feed-window__form {
+    margin-top: -7vh;
+  }
+
   .feed-window__column-two textarea {
-    margin-bottom: 30px;
+    margin-bottom: 2vh;
   }
 
   .feed-window__column-two {
-    margin-top: -15px;
+    margin-top: -2vh;
   }
 
   .feed-window__rate {
     margin-top: 0;
+    margin-bottom: 0;
   }
 
   .feed-window__close-btn {
@@ -1825,5 +1828,58 @@ body {
 
   .burger {
     margin-right: 5px;
+  }
+}
+
+@media (max-height: 560px) {
+  .feed-window {
+    top: 0;
+    overflow-y: auto;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 100vh;
+    padding: 0;
+  }
+
+  .feed-window__title {
+    margin-top: 5px;
+    margin-bottom: 14px;
+  }
+
+  .feed-window__form {
+    margin-bottom: 7px;
+  }
+
+  .feed-window__column-one input {
+    margin-bottom: 3px;
+    height: 40px;
+  }
+
+  .feed-window__column-two textarea {
+    margin-bottom: 0;
+    height: 60px;
+  }
+
+  .feed-window__column-two {
+    margin-top: 0;
+  }
+
+  .feed-window__rate {
+    display: none;
+  }
+
+  .feed-window__send-btn {
+    margin-top: 0;
+    height: 35px;
+    padding: 0 20px;
+  }
+}
+
+@media (max-height: 370px) {
+  .feed-window {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
   }
 }
