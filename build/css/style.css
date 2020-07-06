@@ -530,10 +530,10 @@ body {
 
 .feedback__modarate-message {
   position: fixed;
-  top: 45%;
+  top: 40%;
   left: 30%;
   width: 40%;
-  height: 10vh;
+  height: 100px;
   background-color: white;
   display: none;
   -webkit-box-align: center;
@@ -547,6 +547,16 @@ body {
           box-shadow: 2px 2px 10px black;
   padding: 20px;
   z-index: 15;
+  min-height: 100px;
+  min-width: 200px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.feedback__modarate-message p {
+  width: 100%;
+  text-align: center;
 }
 
 @-webkit-keyframes expandAnswer {
@@ -1726,6 +1736,11 @@ body {
   .feedback__send-btn {
     margin-left: 66px;
     margin-top: -5px;
+  }
+
+  .feedback__modarate-message {
+    left: 0;
+    min-width: 100%;
   }
 
   .contact__body {
