@@ -708,7 +708,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  margin: 0 0 15px 30px;
+  margin: 0 0 0 30px;
   height: 84px;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -1152,7 +1152,7 @@ body {
   }
 
   .nav-footer__wrapper {
-    margin: 0 0 15px 0;
+    margin: 0;
   }
 
   .nav-footer__group {
@@ -1512,9 +1512,10 @@ body {
   }
 
   .slider__control {
-    -webkit-transform: scale(1.25);
-        -ms-transform: scale(1.25);
-            transform: scale(1.25);
+    -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+            transform: scale(1.05);
+    padding: 0;
   }
 
   .product-info {
