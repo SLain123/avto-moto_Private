@@ -98,4 +98,4 @@
         cleanFormAfterSendFunc: cleanFormAfterSend
     };
 
-}());
+})();

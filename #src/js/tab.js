@@ -36,4 +36,4 @@
             else ALL_TABS[i].classList.remove('product-description__btn-active');
         }
     }
-}());
+})();

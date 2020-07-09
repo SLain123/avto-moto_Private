@@ -21,7 +21,7 @@
         }
         });
 
-    }()); // Подключение скрипта для проверки поддержки webp формата и выбора правильного формата в css;
+    })(); // Подключение скрипта для проверки поддержки webp формата и выбора правильного формата в css;
 (function slider() {   
    
     const ALL_SLIDES = document.querySelectorAll('.slider__item');
@@ -116,7 +116,7 @@
         }
     }
     
-}());  // Подключение слайдера;
+})();  // Подключение слайдера;
 (function tab() {
 
     const ALL_TABS = document.querySelectorAll('.product-description__control-block button');
@@ -155,7 +155,7 @@
             else ALL_TABS[i].classList.remove('product-description__btn-active');
         }
     }
-}());
+})();
  // Переключение разделов по табам;
 (function modal() {
 
@@ -257,7 +257,7 @@
         cleanFormAfterSendFunc: cleanFormAfterSend
     };
 
-}()); // Подключение модального окна с формой отзывов;
+})(); // Подключение модального окна с формой отзывов;
 (function feedback() {
     // localStorage.clear(); // для очистки localStorage надо раскоментировать;
 
@@ -664,7 +664,7 @@
         }, 3000);
     }
     
-}()); // Реализация добавления отзывов;
+})(); // Реализация добавления отзывов;
 function initMap() {
     // The location of Uluru
     var uluru = {lat: 59.968368, lng: 30.317514};
@@ -715,7 +715,7 @@ function initMap() {
             }                       
         xDown = null;                                          
     };
-}()); // Cкрипт свайпа для кнопочного меню в мобильной версии;
+})(); // Cкрипт свайпа для кнопочного меню в мобильной версии;
 (function burger() {
 
     const BURGER_BTN = document.querySelector('.burger');
@@ -783,7 +783,7 @@ function initMap() {
     }
 
     setDefaultConf();
-}()); // Скрипт меню гамбургера для планшетной и мобильной версии;
+})(); // Скрипт меню гамбургера для планшетной и мобильной версии;
 (function refresh() {
     let currentWidth = document.documentElement.clientWidth;
     let mainWidth = document.documentElement.clientWidth;
@@ -797,4 +797,4 @@ function initMap() {
                 window.location.reload();
         }
     }, 1000);
-}()); // Скрипт обновления страницы при изменении ее размеров;
+})(); // Скрипт обновления страницы при изменении ее размеров;
